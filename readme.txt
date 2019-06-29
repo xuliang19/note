@@ -1,3 +1,3 @@
 test the new branch
 怎么解决冲突
-怎么合并
+本地和远程合并成功

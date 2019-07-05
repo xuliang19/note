@@ -102,13 +102,13 @@
       <h1>Mozilla</h1>
       <!-- insert <img> element, link to the small
           version of the Firefox logo -->
-      <img src="images/tinified/firefox-120.png" alt="火狐logo">
+      <img src="images/firefox-120.png" alt="火狐logo">
     </header>
 
     <main>
       <article>
         <!-- insert iframe from youtube -->
-        <iframe width="400" height="230" src="https://player.bilibili.com/player.html?aid=57755015&cid=100808199&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+        <iframe width="400" height="230" src="https://player.bilibili.com/player.html?aid=57755015&cid=100808199&page=1" scrolling="no" border="0" frameborder="0" framespacing="0" allowfullscreen="true"> </iframe>
         <h2>Rocking the free web</h2>
 
         <p>Mozilla are a global community of technologists, thinkers, and builders, working together to keep the Internet alive and accessible, so people worldwide can be informed contributors and creators of the Web. We believe this act of human collaboration across an open platform is essential to individual growth and our collective future.</p>
@@ -119,22 +119,39 @@
       <div class="further-info">
         <!-- insert images with srcsets and sizes -->
         <a href="https://www.mozilla.org/en-US/firefox/new/">
-          <img>
+          <img srcset="images/firefox-120.png 120w，
+                       images/firefox-400.png 400w"
+               sizes="(max-width:480px) 120px，
+                       400px" 
+               src="images/firefox-400.png" alt="火狐logo">
         </a>
         <a href="https://www.mozilla.org/">
-          <img>
+          <img srcset="images/dinosaur-120.png 120w，
+                       images/dinosaur-400.png 400w"
+               sizes="(max-width:480px) 120px，
+                       400px" 
+               src="images/dinosaur-400.png" alt="恐龙">
         </a>
         <a href="https://addons.mozilla.org/">
-          <img>
+          <img srcset="images/firefox-map-120.jpg 120w，
+                       images/firefox-map-400.jpg 400w"
+               sizes="(max-width:480px) 120px，
+                       400px" 
+               src="images/firefox-map-400.jpg" alt="火狐map">
         </a>
         <a href="https://developer.mozilla.org/en-US/">
-          <img>
+          <img src="images/mdn.svg" alt="MDN">
         </a>
         <div class="clearfix"></div>
       </div>
 
       <div class="red-panda">
         <!-- insert picture element -->
+        <picture>
+          <source media="(max-width: 400px)" srcset="images/panda-600.jpg">
+          <source media="(min-width: 401px)" srcset="images/panda-1200.jpg">
+          <img src="images/firefox-400.png" alt="熊猫">
+        </picture>
       </div>
 
     </main>

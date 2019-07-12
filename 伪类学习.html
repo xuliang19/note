@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ch-CN">
+<head>
+	<meta charset="utf-8">
+	<title>伪类学习</title>
+	<style>
+		ul {
+		  padding: 0;
+		}
+
+		li {
+		  padding: 3px;
+		  margin-bottom: 5px;
+		  list-style-type: none;
+		}
+
+		a {
+		  text-decoration: none;
+		  color: black;
+		}
+
+		a:hover {
+		  text-decoration: underline;
+		  color: red;
+		}
+
+		li:nth-of-type(2n) {
+		  background-color: #ccc;
+		}
+
+		li:nth-of-type(2n+1) {
+		  background-color: #eee;
+		}
+
+	</style>
+</head>
+<body>
+	<ul>
+	  <li><a href="#">United Kingdom</a></li>
+	  <li><a href="#">Germany</a></li>
+	  <li><a href="#">Finland</a></li>
+	  <li><a href="#">Russia</a></li>
+	  <li><a href="#">Spain</a></li>
+	  <li><a href="#">Poland</a></li>
+	</ul>
+</body>
+</html>

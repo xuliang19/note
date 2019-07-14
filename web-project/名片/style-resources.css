@@ -1,5 +1,5 @@
 /* General styles - put these straight into your stylesheet */
-
+/*一般样式*/
 body {
   margin: 0;
 }
@@ -19,7 +19,7 @@ html {
 .card 10
 */
 /* Rulesets to be matched up with selectors */
-
+/*整体卡片宽/高，背景颜色，边框*/
 .card {
   width: 35em;
   height: 22em;
@@ -29,38 +29,43 @@ html {
   border-radius: 1.5em;
 }
 
-.card p,h2 {
+.card p, .card h2 {
   margin: 0;
 }
 
 .card header h2{
   font-size: 2em;
-  padding:;
+  line-height: 1.5;
 }
 
-.card header,footer {
+.card header, .card footer {
   height: 3em;
   padding: 1em;
 }
 
 .card header {
-  background-image: linear-gradient(to bottom,rgba(0,0,0,0.1), rgba(0,0,0,0));
+  background-image: linear-gradient(to bottom,rgba(0,0,0,0.2), rgba(0,0,0,0));
   border-radius: 1.5em 1.5em 0 0;
 }
 
 .card footer {
-  background-image: linear-gradient(to bottom,rgba(0,0,0,0), rgba(0,0,0,0.1));
+  background-image: linear-gradient(to bottom,rgba(0,0,0,0), rgba(0,0,0,0.2));
   border-radius: 0 0 1.5em 1.5em;
+}
+
+.card footer p {
+  font-size: 1.5em;
+  line-height: 2;
 }
 
 .card article  {
   height: 12em;
-  background-color: rgba(0,0,0,0.3);
-  color: white;
+  background-color: rgba(0,0,0,0.2);
 }
 
 .card article p {
-  padding: auto 1em;
+  padding: 1em;
+  color: rgba(255,255,255,0.8);
 }
 
 .card article img {

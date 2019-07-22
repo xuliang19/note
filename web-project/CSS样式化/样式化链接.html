@@ -16,26 +16,32 @@
 		a {
 			outline: none;
 			text-decoration: none;
-			padding: 2px 1px 0;
-			line-height: 1.5;
+			padding:0px 1px;
+		}
 		a:link {
 
 		}
 
 		a:visited {
-
+			color: purple;
 		}
 
 		a:focus {
-
+			border: 1px dotted;
+			font-weight: bold;
 		}
 
 		a:hover {
-
+			border-bottom: 1px solid;
 		}
 
 		a:active {
+			color: red;
+		}
 
+		a[href*="http"] {
+			background: url("icons.png") no-repeat 100% 50%/16px 16px;
+			padding-right:16px;
 		}
 	</style>
 </head>

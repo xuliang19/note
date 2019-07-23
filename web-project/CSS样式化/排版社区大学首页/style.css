@@ -1,4 +1,15 @@
 /* General setup */
+@font-face {
+    font-family: 'alex_brushregular';
+    src: url('font/alexbrush-regular-webfont.woff2') format('woff2'),
+         url('font/alexbrush-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+  font-family: 'alex_brushregular';
+}
 
 * {
   box-sizing: border-box;

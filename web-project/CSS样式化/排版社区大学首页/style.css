@@ -1,7 +1,21 @@
+/*import web font*/
+@font-face {
+    font-family: 'web-font';
+    src: url('file:///D:/web/web-project/CSS样式化/排版社区大学首页/webfontwebfont/amaranth-regular-webfont.woff2') format('woff2'),
+         url('file:///D:/web/web-project/CSS样式化/排版社区大学首页/webfont/amaranth-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 /* General setup */
 
 * {
   box-sizing: border-box;
+}
+
+html{
+  font-size: 10px;
 }
 
 body {
@@ -43,3 +57,7 @@ header, footer {
 }
 
 /* WRITE YOUR CODE BELOW HERE */
+h1 {
+  font-family: 'web-font',sans-serif;
+  text-align: center;
+}

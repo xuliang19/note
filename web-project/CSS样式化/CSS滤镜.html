@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Filter</title>
+	<style type="text/css">
+		/* 滤镜 */
+
+		.filter {
+			filter: drop-shadow(5px 5px 1px rgba(0,0,0,0.7));
+		}
+		
+		.box-shadow {
+		  box-shadow: 5px 5px 1px rgba(0,0,0,0.7);
+		}
+
+		p {
+		  margin: 1rem auto;
+		  padding: 20px;
+		  width: 100px;
+		  border: 5px dashed red;
+		}
+
+		/* 背景混合 */
+
+		div {
+		  width: 400px;
+		  height: 392px;
+		  padding: 10px;
+		  margin: 10px;
+		  display: inline-block;
+		  background: url("baby.png") no-repeat center 50%;
+		  background-color: green;
+		}
+
+		.multiply {
+		  background-blend-mode: multiply;
+		}
+	</style>
+</head>
+<body>
+	<p class="filter">Filter</p>
+	<p class="box-shadow">Box shadow</p>
+	<!-- 背景混合 -->
+	<div>
+		
+	</div>
+	<div class="multiply">
+		
+	</div>
+</body>
+</html>

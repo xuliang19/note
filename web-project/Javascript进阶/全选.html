@@ -1,33 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>全选</title>
-</head>
-<body>
-	<form>
-		请选择你爱好:<br>
-		<input type="checkbox" name="hobby" id="hobby1">  音乐
-		<input type="checkbox" name="hobby" id="hobby2">  登山
-		<input type="checkbox" name="hobby" id="hobby3">  游泳
-		<input type="checkbox" name="hobby" id="hobby4">  阅读
-		<input type="checkbox" name="hobby" id="hobby5">  打球
-		<input type="checkbox" name="hobby" id="hobby6">  跑步 <br>
-		<input type="button" value = "全选" onclick = "checkall();">
-		<input type="button" value = "全不选" onclick = "clearall();">
-		<p>请输入您要选择爱好的序号，序号为1-6:</p>
-		<input id="wb" name="wb" type="text" >
-		<input name="ok" type="button" value="确定" onclick = "checkone();">
-	</form>
-	<script type="text/javascript">
-		function checkall(){
-			var myhobby=document.getElementsByTagName('input');
-			for(var i=0;i<myhobby.length;i++){
-				if(myhobby[i].type=="checkbox"){
-					myhobby[i].checked=true;
-				}
-			}
-		}
-	</script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>全选</title>
+    </head>
+    <body>
+        <form>
+            请选择你爱好:<br>
+            <input type="checkbox" name="hobby" id="hobby1"> 音乐
+            <input type="checkbox" name="hobby" id="hobby2"> 登山
+            <input type="checkbox" name="hobby" id="hobby3"> 游泳
+            <input type="checkbox" name="hobby" id="hobby4"> 阅读
+            <input type="checkbox" name="hobby" id="hobby5"> 打球
+            <input type="checkbox" name="hobby" id="hobby6"> 跑步 <br>
+            <input type="button" value="全选" onclick="checkall();">
+            <input type="button" value="全不选" onclick="clearall();">
+            <p>请输入您要选择爱好的序号，序号为1-6:</p>
+            <input id="wb" name="wb" type="text">
+            <input name="ok" type="button" value="确定" onclick="checkone();">
+        </form>
+        <script type="text/javascript">
+            function checkall() {
+                var myhobby = document.getElementsByTagName('input');
+                for (var i = 0; i < myhobby.length; i++) {
+                    if (myhobby[i].type == "checkbox") {
+                        myhobby[i].checked = true;
+                    }
+                }
+            }
+
+            function clearall() {
+                var myhobby = document.getElementsByName('hobby');
+                for (var i = 0; i < myhobby.length; i++) {
+                    myhobby[i].checked = false;
+                }
+            }
+
+            //这里使用charAt再用for来遍历字符串；
+            function checkone() {
+                clearall();//先清除
+                var j = document.getElementById("wb").value;
+                var myhobby = document.getElementsByName("hobby");
+                for (var i = 0; i < j.length;i++){
+                    k = parseInt(j.charAt(i));
+                    if (k >= 1 && k <= 6) {
+                        myhobby[k - 1].checked = true;
+                    }
+                    else {
+                        alert("请输入1-6数字");
+                        document.getElementById("wb").value = "";//这里不能j="";这是赋值，不是相等，改变j不会改变
+                    }
+                }
+            }
+        </script>
+    </body>
 </html>

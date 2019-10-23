@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>remove节点</title>
+</head>
+<body>
+  <div id="content"><h1>html</h1><h1>php</h1><h1>javascript</h1><h1>jquery</h1><h1>java</h1></div>
+<!--   <div id="content">
+    <h1>html</h1>
+    <h1>php</h1>
+    <h1>javascript</h1>
+    <h1>jquery</h1>
+    <h1>java</h1>
+  </div> -->
+  <input type="button" name="button1" value="清除节点" onclick="cleartext()">
+  <script type="text/javascript">
+    function cleartext(){
+      var content=document.getElementById('content');
+       for(var i=content.childNodes.length-1;i>=0;i--){
+        var chnode=content.childNodes[i];
+        content.removeChild(chnode);  
+      }
+      // var node1=document.getElementById("content").childNodes;
+      // document.write(node1.length);
+    }
+  </script>
+</body>
+</html>

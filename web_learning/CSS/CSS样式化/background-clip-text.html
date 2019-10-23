@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CSS filters examples</title>
+    <style>
+    html {
+      font-family: impact, sans-serif;
+    }
+
+    h2 {
+      width: 250px;
+      height: 250px;
+      text-align: center;
+      line-height: 250px;
+      font-size: 75px;
+      display: inline-block;
+      background: url("baby.png") no-repeat center;
+    }
+    
+    /* background-clip属性值有border-box padding-box content-box text 当设置为text时候，背景只在文字下面，然后将文字设置为transparent就显示背景了*/
+
+    .text-clip {
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    
+
+    </style>
+  </head>
+  <body>
+    <h2>WOW</h2>
+    <h2 class="text-clip">WOW</h2>   
+  </body>
+</html>

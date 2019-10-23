@@ -1,0 +1,20 @@
+html {
+  font-family: sans-serif;
+  font-size: 10px;
+}
+
+/* Your CSS below here */
+p {
+	font: 1.8rem/3 "sans-serif";
+	width: 200px;
+	height: 54px;
+	text-align: center;
+	background: linear-gradient(to right, rgb(69, 104, 220), rgb(176, 106, 179)) ;
+	text-shadow: 1.5px 1.5px 1.5px black;
+	color: deeppink;
+	border-radius: 10px;
+	border: 1px solid black;
+	box-shadow: 2px 2px 4px black,
+				inset -1px -1px 2px black,
+				inset 1px 1px 2px white;
+}

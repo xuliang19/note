@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>remove节点</title>
+</head>
+<body>
+  <div id="content"><h1>html</h1><h1>php</h1><h1>javascript</h1><h1>jquery</h1><h1>java</h1></div>
+<!--   <div id="content">
+    <h1>html</h1>
+    <h1>php</h1>
+    <h1>javascript</h1>
+    <h1>jquery</h1>
+    <h1>java</h1>
+  </div> -->
+  <input type="button" name="button1" value="清除节点" onclick="cleartext()">
+  <script type="text/javascript">
+    function cleartext(){
+      var content=document.getElementById('content');
+      //此时的执行效果是：i=0,i<5,html删除;i=1,i<4,javascript删除;i=2,i<3,java删除;只剩下php和jquery
+       for(var i=0;i<content.childNodes.length;i++){
+        var chnode=content.childNodes[i];
+        content.removeChild(chnode); 
+      }
+      // var node1=document.getElementById("content").childNodes;
+      // document.write(node1.length);
+    }
+  </script>
+</body>
+</html>

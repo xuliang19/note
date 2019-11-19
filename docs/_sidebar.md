@@ -1,5 +1,5 @@
 - [HTML](/FrontEnd/HTML/)
-- [CSS](/FrontEnd/CSS/CSS.md)
-- [JS](/FrontEnd/JS/JS.md)
-- [框架](/FrontEnd/框架/框架.md)
+- [CSS](/FrontEnd/CSS/)
+- [JS](/FrontEnd/JS/)
+- [框架](/FrontEnd/框架/)
 - [Git](Git/)

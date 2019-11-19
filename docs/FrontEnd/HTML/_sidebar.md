@@ -1,6 +1,6 @@
 - **HTML介绍**
   - [1.HTML入门](FrontEnd/HTML/1.HTML入门.md)
-  - [2.Head头部](FrontEnd/HTML/2.Head头部.md)
+  - [2.Head头部](2.Head头部.md)
   - [3.HTML文字基础](FrontEnd/HTML/3.HTML文字基础.md)
   - [4.建立超链接](FrontEnd/HTML/4.建立超链接.md)
   - [5.高级文字排版](FrontEnd/HTML/5.高级文字排版.md)

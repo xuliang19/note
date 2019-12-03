@@ -7,7 +7,7 @@
 - **数据类型**
 
   - [概述](FrontEnd/JS/数据概述.md)
-  - [null,undefined 和布尔值](FrontEnd/JS/null,undefined 和布尔值.md)
+  - [null，undefined和布尔值](FrontEnd/JS/null,undefined和布尔值.md)
   - [数值](FrontEnd/JS/数值.md)
   - [字符串](FrontEnd/JS/字符串.md)
   - [对象](FrontEnd/JS/对象.md)
@@ -68,7 +68,7 @@
   - [属性的操作](FrontEnd/JS/属性的操作.md)
   - [Text和DocumentFragment节点](FrontEnd/JS/Text和DocumentFragment节点.md)
   - [CSS操作](FrontEnd/JS/CSS操作.md)
-  - [Mutation Observer API](FrontEnd/JS/Mutation Observer API.md)
+  - [Mutation Observer API](FrontEnd/JS/MutationObserverAPI.md)
 
 - **事件**
 
@@ -88,16 +88,16 @@
 
   - [浏览器模型概述](FrontEnd/JS/浏览器模型概述.md)
   - [window对象](FrontEnd/JS/window对象.md)
-  - [Navigator 对象,Screen 对象](FrontEnd/JS/Navigator 对象,Screen 对象.md)
+  - [Navigator对象，Screen对象](FrontEnd/JS/Navigator对象,Screen对象.md)
   - [Cookie](FrontEnd/JS/Cookie.md)
   - [XMLHttpRequest](FrontEnd/JS/XMLHttpRequest.md)
   - [同源限制](FrontEnd/JS/同源限制.md)
   - [CORS通信](FrontEnd/JS/CORS通信.md)
   - [Storage接口](FrontEnd/JS/Storage接口.md)
   - [History对象](FrontEnd/JS/History对象.md)
-  - [Location对象,URL对象,URLSearchParams对象](FrontEnd/JS/Location对象,URL对象,URLSearchParams对象.md)
-  - [ArrayBuffer对象,Blob对象](FrontEnd/JS/ArrayBuffer对象,Blob对象.md)
-  - [File对象,FileList对象,FileReader对象](FrontEnd/JS/File对象,FileList对象,FileReader对象.md)
-  - [表单,FormData对象](FrontEnd/JS/表单,FormData对象.md)
-  - [IndexedDB API](FrontEnd/JS/IndexedDB API.md)
-  - [Web Worker](FrontEnd/JS/Web Worker.md)
+  - [Location对象，URL对象，URLSearchParams对象](FrontEnd/JS/Location对象,URL对象,URLSearchParams对象.md)
+  - [ArrayBuffer对象，Blob对象](FrontEnd/JS/ArrayBuffer对象,Blob对象.md)
+  - [File对象，FileList对象，FileReader对象](FrontEnd/JS/File对象,FileList对象,FileReader对象.md)
+  - [表单，FormData对象](FrontEnd/JS/表单,FormData对象.md)
+  - [IndexedDB API](FrontEnd/JS/IndexedDBAPI.md)
+  - [Web Worker](FrontEnd/JS/WebWorker.md)

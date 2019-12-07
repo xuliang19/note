@@ -7,7 +7,15 @@
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="shortcut icon" href="README.assets/icon.svg">
-  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+  <!-- <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css"> -->
+  <link rel="stylesheet" href="style/vue.css">
+  <!-- 覆盖些样式，增加易读性 -->
+  <style>
+    :root {
+      --base-line-height: 1.2;
+      --content-max-width: 20em;
+    }
+  </style>
 </head>
 <body>
   <div id="app"></div>
@@ -32,7 +40,7 @@
     }
     
   </script>
-  <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+  <script src="script/docsify.min.js"></script>
   <!-- 图片缩放 -->
   <!-- <script src="//unpkg.com/docsify/lib/plugins/zoom-image.js"></script> -->
 </body>

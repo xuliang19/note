@@ -1,7 +1,6 @@
 - **入门**
 
   - [导论](FrontEnd/JS/导论.md)
-  - [语法](FrontEnd/JS/语法.md)
   - [基本语法](FrontEnd/JS/基本语法.md)
 - **数据类型**
 

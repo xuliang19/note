@@ -3,7 +3,6 @@
   - [导论](FrontEnd/JS/导论.md)
   - [语法](FrontEnd/JS/语法.md)
   - [基本语法](FrontEnd/JS/基本语法.md)
-
 - **数据类型**
 
   - [概述](FrontEnd/JS/数据概述.md)
@@ -13,7 +12,6 @@
   - [对象](FrontEnd/JS/对象.md)
   - [函数](FrontEnd/JS/函数.md)
   - [数组](FrontEnd/JS/数组.md)
-
 - **运算符**
 
   - [算术运算符](FrontEnd/JS/算术运算符.md)
@@ -21,14 +19,13 @@
   - [布尔运算符](FrontEnd/JS/布尔运算符.md)
   - [二进制位运算符](FrontEnd/JS/二进制位运算符.md)
   - [其他运算符及运算顺序](FrontEnd/JS/其他运算符及运算顺序.md)
-
-- **语法专题**
-
+- **专题**
+- [变量、作用域和内存](FrontEnd/JS/变量,作用域和内存.md)
   - [数据类型转换](FrontEnd/JS/数据类型转换.md)
   - [错误处理机制](FrontEnd/JS/错误处理机制.md)
   - [编程风格](FrontEnd/JS/编程风格.md)
   - [console对象与控制台](FrontEnd/JS/console对象与控制台.md)
-
+  
 - **标准库**
 
   - [Object对象](FrontEnd/JS/Object对象.md)
@@ -42,7 +39,6 @@
   - [Date对象](FrontEnd/JS/Date对象.md)
   - [RegExp对象](FrontEnd/JS/RegExp对象.md)
   - [JSON对象](FrontEnd/JS/JSON对象.md)
-
 - **面向对象编程**
 
   - [实例对象与new命令](FrontEnd/JS/实例对象与new命令.md)
@@ -50,13 +46,11 @@
   - [对象的继承](FrontEnd/JS/对象的继承.md)
   - [Object对象的相关方法](FrontEnd/JS/Object对象的相关方法.md)
   - [严格模式](FrontEnd/JS/严格模式.md)
-
 - **异步操作**
 
   - [概述](FrontEnd/JS/异步概述.md)
   - [定时器](FrontEnd/JS/定时器.md)
   - [Promise对象](FrontEnd/JS/Promise对象.md)
-
 - **DOM**
 
   - [概述](FrontEnd/JS/DOM概述.md)
@@ -69,7 +63,6 @@
   - [Text和DocumentFragment节点](FrontEnd/JS/Text和DocumentFragment节点.md)
   - [CSS操作](FrontEnd/JS/CSS操作.md)
   - [Mutation Observer API](FrontEnd/JS/MutationObserverAPI.md)
-
 - **事件**
 
   - [EventTarget接口](FrontEnd/JS/EventTarget接口.md)
@@ -83,7 +76,6 @@
   - [拖拉事件](FrontEnd/JS/拖拉事件.md)
   - [其他常见事件](FrontEnd/JS/其他常见事件.md)
   - [GlobalEventHandlers接口](FrontEnd/JS/GlobalEventHandlers接口.md)
-
 - **BOM**
 
   - [浏览器模型概述](FrontEnd/JS/浏览器模型概述.md)

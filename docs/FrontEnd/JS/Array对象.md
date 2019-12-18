@@ -189,7 +189,7 @@ Array.prototype.join.call(obj, '-')
 
 ##### 3.5 concat()
 
-`contact`将新数组的成员添加到原数组的末尾，返回一个新数组（不会改变原数组）
+`concat`将新数组的成员添加到原数组的末尾，返回一个新数组（不会改变原数组）
 
 ```js
 ['hello'].concat(['world'])
@@ -200,7 +200,7 @@ Array.prototype.join.call(obj, '-')
 // [{ a: 1 }, { b: 2 }]
 ```
 
-除了数组，`contact`还可用其他类型的值作为参数
+除了数组，`concat`还可用其他类型的值作为参数
 
 ```js
 [1, 2, 3].concat(4, 5, 6)

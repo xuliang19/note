@@ -129,7 +129,7 @@ Number.MIN_SAFE_INTEGER // -9007199254740991
 
 #### 4. 自定义方法
 
-与其他对象一样，`Number.prototype`对象上面可以自定义方法，被`Number`的实例继承（数值本身无法自定属性）
+与其他对象一样，`Number.prototype`对象上面可以自定义方法，被`Number`的实例继承
 
 ```js
 Number.prototype.add = function (x) {
@@ -149,3 +149,12 @@ Number.prototype.subtract = function (x) {
 // 6
 ```
 
+数值本身无法自定属性
+
+```js
+var n = 1;
+n.x = 1;
+n.x // undefined
+```
+
+一旦被调用属性，`n`就自动转为`Number`的实例对象，调用结束后，该对象自动销毁。所以，下一次调用`n`的属性时，实际取到的是另一个对象，所以`x`是读不出来的

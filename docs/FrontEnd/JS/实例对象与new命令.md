@@ -41,7 +41,74 @@ var Vehicle = function () {
 
 ##### 3.1 基本用法
 
+`new`命令的作用，就是执行构造函数，返回一个实例对象
+
+```js
+var Vehicle = function () {
+  this.price = 1000;
+};
+var v = new Vehicle();
+v.price // 1000
+```
+
+`new`命令执行时，构造函数内部的`this`，就代表了新生成的实例对象，`this.price`表示实例对象有一个`price`属性，值是1000
+
+使用`new`命令时，根据需要，构造函数也可以接受参数。
+
+```js
+var Vehicle = function (p) {
+  this.price = p;
+};
+var v = new Vehicle(500);
+```
+
+`new`命令本身就可以执行构造函数，所以后面的构造函数可以带括号，也可以不带括号（推荐带括号）
+
+如果忘记使用`new`命令，直接调用构造函数：这时构造函数就变成了普通函数，不会生成实例对象，而此时`this`代表全局对象
+
+```js
+var Vehicle = function (){
+  this.price = 1000;
+};
+var v = Vehicle();
+v // undefined
+price // 1000
+```
+
+为了保证构造函数必须与`new`一起使用，一个解决办法是可以在构造函数内部使用严格模式
+
+```js
+function Fubar(foo, bar){
+  'use strict';
+  this._foo = foo;
+  this._bar = bar;
+}
+Fubar()
+// TypeError: Cannot set property '_foo' of undefined
+```
+
+另一个解决办法是在构造函数内判断是否使用`new`命令，若没有则返回一个实例对象
+
+```js
+function Fubar(foo, bar) {
+  if (!(this instanceof Fubar)) {
+    return new Fubar(foo, bar);
+  }
+  this._foo = foo;
+  this._bar = bar;
+}
+Fubar(1, 2)._foo // 1
+(new Fubar(1, 2))._foo // 1
+```
+
 ##### 3.2 new 命令的原理
+
+使用`new`命令时，它后面的函数依次执行下面的步骤。
+
+1. 创建一个空对象，作为将要返回的对象实例。
+2. 将这个空对象的原型，指向构造函数的`prototype`属性。
+3. 将这个空对象赋值给函数内部的`this`关键字。
+4. 开始执行构造函数内部的代码。
 
 ##### 3.3 new.target
 

@@ -110,6 +110,90 @@ Fubar(1, 2)._foo // 1
 3. 将这个空对象赋值给函数内部的`this`关键字。
 4. 开始执行构造函数内部的代码。
 
+如果构造函数内部有`return`语句，而且`return`后面跟着一个对象，`new`命令会返回`return`语句指定的对象；否则，就会不管`return`语句，返回`this`对象
+
+```js
+var Vehicle = function () {
+  this.price = 1000;
+  return 1000;
+};
+(new Vehicle()) === 1000
+// false
+```
+
+上述代码中，`return`返回的为一个数值，`new`命令会忽略这个`return`语句，返回构造后的`this`对象
+
+`new`命令总返回一个对象，要么是实例对象，要么是`return`语句指定的对象
+
+```js
+function getMessage() {
+  return 'this is a message';
+}
+var msg = new getMessage();
+msg // {}
+typeof msg // "object"
+```
+
+上述代码中，既没有`this`，`return`也不返回对象，所以会返回一个空对象
+
+`new`命令简化的内部流程如下
+
+```js
+function _new(/* 构造函数 */ constructor, /* 构造函数参数 */ params) {
+  // 将 arguments 对象转为数组
+  var args = [].slice.call(arguments);
+  // 取出构造函数
+  var constructor = args.shift();
+  // 创建一个空对象，继承构造函数的 prototype 属性
+  var context = Object.create(constructor.prototype);
+  // 执行构造函数
+  var result = constructor.apply(context, args);
+  // 如果返回结果是对象，就直接返回，否则返回 context 对象
+  return (typeof result === 'object' && result != null) ? result : context;
+}
+// 实例
+var actor = _new(Person, '张三', 28);
+```
+
 ##### 3.3 new.target
 
+函数内部可以使用`new.target`属性。如果当前函数是`new`命令调用，`new.target`指向当前函数，否则为`undefined`。
+
+```js
+function f() {
+  console.log(new.target === f);
+}
+f() // false
+new f() // true
+```
+
+使用这个属性，可以判断函数调用的时候，是否使用`new`命令。
+
+```js
+function f() {
+  if (!new.target) {
+    throw new Error('请使用 new 命令调用！');
+  }
+  // ...
+}
+f() // Uncaught Error: 请使用 new 命令调用！
+```
+
 #### 4. Object.create() 创建实例对象
+
+有时候我们拿不到构造函数，只能拿到一个现有的对象。我们希望以这个对象为模板，生成新的实例对象，这时就用`Object.create()`
+
+```js
+var person1 = {
+  name: '张三',
+  age: 38,
+  greeting: function() {
+    console.log('Hi! I\'m ' + this.name + '.');
+  }
+};
+var person2 = Object.create(person1);
+person2.name // 张三
+person2.greeting() // Hi! I'm 张三.
+```
+
+后面会详细介绍`Object.create()`

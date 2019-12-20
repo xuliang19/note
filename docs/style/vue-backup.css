@@ -58,7 +58,7 @@ body {
  -moz-osx-font-smoothing:grayscale;
  -webkit-font-smoothing:antialiased;
  color:#34495e;
- font-family:Arial,Source Sans Pro,Helvetica Neue,sans-serif;
+ font-family:Source Sans Pro,Helvetica Neue,Arial,sans-serif;
  font-size:15px;
  letter-spacing:0;
  margin:0;
@@ -676,106 +676,116 @@ body {
 .markdown-section code {
  border-radius:2px;
  color:#e96900;
- font-size:0.9rem;
+ font-size:.8rem;
  margin:0 2px;
  padding:3px 5px;
  white-space:pre-wrap
 }
-.markdown-section code {
-/* 文字中的代码背景颜色 */
+.markdown-section code,
+.markdown-section pre {
  background-color:#f8f8f8;
- font-family:Consolas, 'Courier New', monospace
+ font-family:Roboto Mono,Monaco,courier,monospace
 }
 .markdown-section pre {
-/* 代码块中两侧的背景颜色 */
- border-radius: 8px;
- background-color:#23241f;
  -moz-osx-font-smoothing:initial;
  -webkit-font-smoothing:initial;
- line-height:1.4rem;
- margin:1em 0;
+ line-height:1.5rem;
+ margin:1.2em 0;
  overflow:auto;
- padding:0 1.2rem;
+ padding:0 1.4rem;
  position:relative;
  word-wrap:normal
 }
-
-/* 通用代码 */
-.token.comment {
- font-size:0.85rem;
- color:#75715E
+.token.cdata,
+.token.comment,
+.token.doctype,
+.token.prolog {
+ color:#8e908c
+}
+.token.namespace {
+ opacity:.7
+}
+.token.boolean,
+.token.number {
+ color:#c76b29
 }
 .token.punctuation {
- color:#f8f8f2
+ color:#525252
 }
-
-/* HTML代码高亮 */
-.lang-html .token.tag {
- color:#F92672
+.token.property {
+ color:#c08b30
 }
-.lang-html .token.attr-name {
- color:#A6E22E
+.token.tag {
+ color:#2973b7
 }
-.lang-html .token.attr-value {
- color:#E6DB74
+.token.string {
+ color:var(--theme-color,#42b983)
 }
-.lang-html .token.doctype {
- color:#75715E
+.token.selector {
+ color:#6679cc
 }
-/* CSS代码高亮 */
-.lang-css .token.selector {
- color:#A6E22E
+.token.attr-name {
+ color:#2973b7
 }
-.lang-css .token.property {
- color:#66D9EF
+.language-css .token.string,
+.style .token.string,
+.token.entity,
+.token.url {
+ color:#22a2c9
 }
-.lang-css .token.string,
-.lang-css .token.url {
- color:#E6DB74
+.token.attr-value,
+.token.control,
+.token.directive,
+.token.unit {
+ color:var(--theme-color,#42b983)
 }
-.lang-css {
- color:#f8f8f2 !important;
+.token.function,
+.token.keyword {
+ color:#e96900
 }
-
-/* JS代码高亮 */
-.lang-js {
- color:#f8f8f2 !important;
+.token.atrule,
+.token.regex,
+.token.statement {
+ color:#22a2c9
 }
-.lang-js .token.keyword {
- color:#66D9EF
+.token.placeholder,
+.token.variable {
+ color:#3d8fd1
 }
-.lang-js .token.string {
- color:#E6DB74
+.token.deleted {
+ text-decoration:line-through
 }
-.lang-js .token.constant {
- color:#f8f8f2
+.token.inserted {
+ border-bottom:1px dotted #202746;
+ text-decoration:none
 }
-.lang-js .token.operator {
- color:#F92672
+.token.italic {
+ font-style:italic
 }
-.lang-js .token.function {
- color:#A6E22E
+.token.bold,
+.token.important {
+ font-weight:700
 }
-.lang-js .token.boolean,
-.lang-js .token.number {
- color:#b267e6
+.token.important {
+ color:#c94922
 }
-
+.token.entity {
+ cursor:help
+}
 .markdown-section pre>code {
  -moz-osx-font-smoothing:initial;
  -webkit-font-smoothing:initial;
- /* 代码块背景色 */
- background-color:#23241f;
+ background-color:#f8f8f8;
  border-radius:2px;
- color:#ffffff;
+ color:#525252;
  display:block;
- font-family:Consolas, 'Courier New', monospace;
- font-size:0.9rem;
+ font-family:Roboto Mono,Monaco,courier,monospace;
+ font-size:.8rem;
  line-height:inherit;
  margin:0 2px;
  max-width:inherit;
  overflow:inherit;
- padding:1.2em 5px;
+ padding:2.2em 5px;
  white-space:inherit
 }
 .markdown-section code:after,
@@ -787,9 +797,7 @@ code .token {
  -webkit-font-smoothing:initial;
  min-height:1.5rem
 }
-/* 代码块右上角小字体 */
 pre:after {
- font-family: Consolas, 'Courier New', monospace;
  color:#ccc;
  content:attr(data-lang);
  font-size:.6rem;

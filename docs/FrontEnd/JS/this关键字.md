@@ -1,4 +1,4 @@
-#### 1. 涵义
+#### 1. 含义
 
 `this`关键字是一个非常重要的语法点，之前说过，`this`在构造函数中表示实例对象，此外，`this`还可以用在别的场合。但都有一个共同点：**`this`总返回一个对象**
 
@@ -301,9 +301,13 @@ var a = {
     },
     p: "Hello"
 }
-var hello = a;
+var hello = a.b;
 hello()//undefined
 ```
+
+如图所示，相当于直接把函数`f`给了`hello`（嵌套函数`this`指向也可以用这个图理解）
+
+![image-20191220103133186](assets/image-20191220103133186.png ":size=300")
 
 所以，赋值给变量的得是一个对象，否则没法调用
 
@@ -453,7 +457,23 @@ o.f = function () {
 $('#button').on('click', o.f);
 ```
 
-上面代码中，点击按钮以后，控制台会显示`false`。原因是此时`this`不再指向`o`对象，而是指向按钮的 DOM 对象，**因为`f`方法是在按钮对象的环境中被调用的**。这种细微的差别，很容易在编程中忽视，导致难以察觉的错误。
+上面代码中，点击按钮以后，控制台会显示`false`。原因是此时`this`不再指向`o`对象，而是指向按钮的 DOM 对象，**因为`f`方法是在按钮对象的环境中被调用的**。这种细微的差别，很容易在编程中忽视，导致难以察觉的错误
+
+**典型回调函数（这里由于参数传递，是一种隐式的赋值，相当于拷贝副本（注意之前讲的传值和传址传递））**
+
+```js
+function doFoo(fn) {
+    fn();//调用位置。这了fn引用foo函数，相当于赋值
+}
+var obj = {
+    a: 2,
+    foo: function foo() {
+        console.log(this.a);
+    }
+};
+var a = "global";
+doFoo(obj.foo)//global
+```
 
 为了解决这个问题，可以采用下面的一些方法对`this`进行绑定，也就是使得`this`固定指向某个对象，减少不确定性
 
@@ -613,7 +633,7 @@ $('#button').on('click', f);
 
 ##### 5.3 Function.prototype.bind()
 
-`bind`方法用于将函数体内的`this`绑定到某个对象，然后返回一个新函数。
+`bind`方法用于将函数体内的`this`绑定到某个对象，然后返回一个新函数（不会立即调用）
 
 ```js
 var d = new Date();
@@ -666,15 +686,12 @@ func();
 obj.count // 101
 ```
 
-上面代码中，`bind`方法将`inc`方法内部的`this`，绑定到`obj`对象。结果调用`func`函数以后，递增的就是`obj`内部的`count`属性。
-
 `bind`还可以接受更多的参数，将这些参数绑定原函数的参数。
 
 ```js
 var add = function (x, y) {
   return x * this.m + y * this.n;
 }
-
 var obj = {
   m: 2,
   n: 2
@@ -685,7 +702,7 @@ newAdd(5) // 20
 
 上面代码中，`bind`方法除了绑定`this`对象，还将`add`函数的第一个参数`x`绑定成`5`，然后返回一个新函数`newAdd`，这个函数只要再接受一个参数`y`就能运行了。
 
-如果`bind`方法的第一个参数是`null`或`undefined`，等于将`this`绑定到全局对象，函数运行时`this`指向顶层对象（浏览器为`window`）。
+如果`bind`方法的第一个参数是`null`或`undefined`，等于将`this`绑定到全局对象，函数运行时`this`指向顶层对象（浏览器为`window`）
 
 ```js
 function add(x, y) {
@@ -694,8 +711,6 @@ function add(x, y) {
 var plus5 = add.bind(null, 5);
 plus5(10) // 15
 ```
-
-上面代码中，函数`add`内部并没有`this`，使用`bind`方法的主要目的是绑定参数`x`，以后每次运行新函数`plus5`，就只需要提供另一个参数`y`就够了。而且因为`add`内部没有`this`，所以`bind`的第一个参数是`null`，不过这里如果是其他对象，也没有影响。
 
 `bind`方法有一些使用注意点。
 
@@ -739,9 +754,11 @@ function callIt(callback) {
 }
 callIt(counter.inc.bind(counter));
 counter.count // 1
+
+//callIt(counter.inc);
 ```
 
-上面代码中，`callIt`方法会调用回调函数。这时如果直接把`counter.inc`传入，调用时`counter.inc`内部的`this`就会指向全局对象。使用`bind`方法将`counter.inc`绑定`counter`以后，就不会有这个问题，`this`总是指向`counter`。
+上面代码中，`callIt`方法会调用回调函数。这时如果直接把`counter.inc`传入，调用时`counter.inc`内部的`this`就会指向全局对象。使用`bind`方法将`counter.inc`绑定`counter`以后，就不会有这个问题，`this`总是指向`counter`（这不和那个嵌套函数类似么）
 
 还有一种情况比较隐蔽，就是某些数组方法可以接受一个函数当作参数。这些函数内部的`this`指向，很可能也会出错。
 
@@ -759,19 +776,7 @@ obj.print()
 // 没有任何输出
 ```
 
-上面代码中，`obj.print`内部`this.times`的`this`是指向`obj`的，这个没有问题。但是，`forEach`方法的回调函数内部的`this.name`却是指向全局对象，导致没有办法取到值。稍微改动一下，就可以看得更清楚。
-
-```js
-obj.print = function () {
-  this.times.forEach(function (n) {
-    console.log(this === window);
-  });
-};
-obj.print()
-// true
-// true
-// true
-```
+上面代码和嵌套函数`this`指向一样，都是`window`
 
 解决这个问题，也是通过`bind`方法绑定`this`。
 

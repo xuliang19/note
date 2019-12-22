@@ -614,7 +614,7 @@ body {
 .markdown-section h3,
 .markdown-section h4,
 .markdown-section strong {
- color:#2c3e50;
+ color:#49502c;
  font-weight:600
 }
 .markdown-section a {
@@ -634,13 +634,16 @@ body {
  margin:40px 0 .6rem
 }
 .markdown-section h4 {
- font-size:1.25rem
+ font-size:1.25rem;
+ margin:20px 0;
 }
 .markdown-section h5 {
- font-size:1rem
+ font-size:1rem;
+ margin:15px 0;
 }
 .markdown-section h6 {
- color:#777;
+ margin:15px 0;
+ color:rgb(214, 85, 85);
  font-size:1rem
 }
 .markdown-section figure,

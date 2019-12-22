@@ -102,6 +102,7 @@ var obj = new Object();
 | :-----------------------: | :--------------------------------: |
 |     `Object.create()`     | 指定原型对象和属性，返回一个新对象 |
 | `Object.getPrototypeOf()` |     获取对象的`Prototype`对象      |
+| `Object.setPrototypeOf()` |    为参数设置原型，返回参数对象    |
 
 ##### 4.1 Object.keys()，Object.getOwnPropertyNames()
 
@@ -330,6 +331,152 @@ obj.bar.push('c');
 obj.bar // ["a", "b", "c"]
 ```
 
+##### 4.11 Object.create()
+
+有时候我们无法取得构造函数，只有实例对象，此时想创建另一个实例可用`Object.create`。该方法接受一个对象为参数，以它为原型返回一个实例对象，该实例完全继承原型对象的属性
+
+```js
+// 原型对象
+var A = {
+  print: function () {
+    console.log('hello');
+  }
+};
+// 实例对象
+var B = Object.create(A);
+Object.getPrototypeOf(B) === A // true
+B.print() // hello
+B.print === A.print // true
+```
+
+实际上，`Object.create`方法可以用下面的代码代替。
+
+```js
+if (typeof Object.create !== 'function') {
+  Object.create = function (obj) {
+    function F() {}
+    F.prototype = obj;
+    return new F();
+  };
+}
+```
+
+上面代码表明，`Object.create`方法的实质是新建一个空的构造函数`F`，然后让`F.prototype`属性指向参数对象`obj`，最后返回一个`F`的实例，从而实现让该实例继承`obj`的属性。
+
+下面三种方式生成的新对象是等价的。
+
+```js
+var obj1 = Object.create({});
+var obj2 = Object.create(Object.prototype);
+var obj3 = new Object();
+```
+
+如果想要生成一个不继承任何属性（比如没有`toString`和`valueOf`方法）的对象，可以将`Object.create`的参数设为`null`。
+
+```js
+var obj = Object.create(null);
+obj.valueOf()
+// TypeError: Object [object Object] has no method 'valueOf'
+```
+
+上面代码中，对象`obj`的原型是`null`，它就不具备一些定义在`Object.prototype`对象上面的属性，比如`valueOf`方法。
+
+使用`Object.create`方法的时候，必须提供对象原型，即参数不能为空，或者不是对象，否则会报错。
+
+```js
+Object.create()
+// TypeError: Object prototype may only be an Object or null
+Object.create(123)
+// TypeError: Object prototype may only be an Object or null
+```
+
+`Object.create`方法生成的新对象，动态继承了原型。在原型上添加或修改任何方法，会立刻反映在新对象之上。
+
+除了对象的原型，`Object.create`方法还可以接受第二个参数。该参数是一个属性描述对象，它所描述的对象属性，会添加到实例对象，作为该对象自身的属性。
+
+```js
+var obj = Object.create({}, {
+  p1: {
+    value: 123,
+    enumerable: true,
+    configurable: true,
+    writable: true,
+  },
+  p2: {
+    value: 'abc',
+    enumerable: true,
+    configurable: true,
+    writable: true,
+  }
+});
+// 等同于
+var obj = Object.create({});
+obj.p1 = 123;
+obj.p2 = 'abc';
+```
+
+`Object.create`方法生成的对象，继承了它的原型对象的构造函数（记住那张图）
+
+```js
+function A() {}
+var a = new A();
+var b = Object.create(a);
+b.constructor === A // true
+b instanceof A // true
+```
+
+##### 4.12 Object.getPrototypeOf()
+
+`Object.getPrototypeOf`方法返回参数对象的原型。这是获取原型对象的标准方法。
+
+```js
+var F = function () {};
+var f = new F();
+Object.getPrototypeOf(f) === F.prototype // true
+```
+
+上面代码中，实例对象`f`的原型是`F.prototype`。
+
+下面是几种特殊对象的原型。
+
+```js
+// 空对象的原型是 Object.prototype
+Object.getPrototypeOf({}) === Object.prototype // true
+// Object.prototype 的原型是 null
+Object.getPrototypeOf(Object.prototype) === null // true
+// 函数的原型是 Function.prototype
+function f() {}
+Object.getPrototypeOf(f) === Function.prototype // true
+```
+
+##### 4.13 Object.setPrototypeOf()
+
+`Object.setPrototypeOf`方法为参数对象设置原型，返回该参数对象。它接受两个参数，第一个是现有对象，第二个是原型对象。
+
+```js
+var a = {};
+var b = {x: 1};
+Object.setPrototypeOf(a, b);
+Object.getPrototypeOf(a) === b // true
+a.x // 1
+```
+
+上面代码中，`Object.setPrototypeOf`方法将对象`a`的原型，设置为对象`b`，因此`a`可以共享`b`的属性。
+
+`new`命令可以使用`Object.setPrototypeOf`方法模拟。
+
+```js
+var F = function () {
+  this.foo = 'bar';
+};
+var f = new F();
+// 等同于
+var f = Object.setPrototypeOf({}, F.prototype);
+F.call(f);
+```
+
+和之前的`new`原理结合看，还有构造函数的继承
+
 #### 5. Object 的实例方法
 
 除了上述的静态方法，还有定义在`Object.prototype`的方法（实例方法），所有`Object`的实例对象都继承了这些方法，主要有以下六个：
@@ -473,7 +620,26 @@ obj.hasOwnProperty('toString') // false
 
 ##### 5.6 Object.prototype.isPrototypeOf()
 
-后续补上
+实例对象的`isPrototypeOf`方法，用来判断该对象是否为参数对象的原型。
+
+```js
+var o1 = {};
+var o2 = Object.create(o1);
+var o3 = Object.create(o2);
+o2.isPrototypeOf(o3) // true
+o1.isPrototypeOf(o3) // true
+```
+
+上面代码中，`o1`和`o2`都是`o3`的原型。这表明只要实例对象处在参数对象的原型链上，`isPrototypeOf`方法都返回`true`。
+
+```js
+Object.prototype.isPrototypeOf({}) // true
+Object.prototype.isPrototypeOf([]) // true
+Object.prototype.isPrototypeOf(/xyz/) // true
+Object.prototype.isPrototypeOf(Object.create(null)) // false
+```
+
+上面代码中，由于`Object.prototype`处于原型链的最顶端，所以对各种实例都返回`true`，只有直接继承自`null`的对象除外。
 
 ##### 5.7 Object.prototype.propertyIsEnumerable()
 

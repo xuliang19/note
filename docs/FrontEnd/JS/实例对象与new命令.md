@@ -195,5 +195,3 @@ var person2 = Object.create(person1);
 person2.name // 张三
 person2.greeting() // Hi! I'm 张三.
 ```
-
-后面会详细介绍`Object.create()`

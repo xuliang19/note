@@ -97,7 +97,7 @@ div.firstChild.nodeValue // "hello world"
 
 ##### 1.4 Node.prototype.textContent
 
-`textContent`属性返回当前节点和它的所有后代节点的文本内容。
+`textContent`属性返回当前节点和它的**所有后代节点**的文本内容。
 
 ```js
 // HTML 代码为
@@ -254,7 +254,7 @@ p1.firstChild.nodeName // "#text"
 
 ##### 1.12 Node.prototype.childNodes
 
-`childNodes`属性返回一个类似数组的对象（`NodeList`集合），成员包括当前节点的所有子节点（直接子节点哦）
+`childNodes`属性返回一个类似数组的对象（`NodeList`集合），成员包括当前节点的所有子节点 （直接子节点哦）
 
 ```js
 var children = document.querySelector('ul').childNodes;
@@ -285,9 +285,20 @@ for (var i = 0; i < children.length; i++) {
 
 上面代码中，文档节点的第一个子节点的类型是10（即文档类型节点），第二个子节点的类型是1（即元素节点）。
 
-注意，除了元素节点，`childNodes`属性的返回值还包括文本节点和注释节点。如果当前节点不包括任何子节点，则返回一个空的`NodeList`集合。由于`NodeList`对象是一个动态集合，一旦子节点发生变化，立刻会反映在返回结果之中。
+注意，除了元素节点，`childNodes`属性的**返回值还包括文本节点和注释节点**。如果当前节点不包括任何子节点，则返回一个空的`NodeList`集合。由于`NodeList`**对象是一个动态集合，一旦子节点发生变化，立刻会反映在返回结果之中**。
 
 ##### 1.13Node.prototype.isConnected
+
+`isConnected`属性返回一个布尔值，表示当前节点是否在文档之中。
+
+```js
+var test = document.createElement('p');
+test.isConnected // false
+document.body.appendChild(test);
+test.isConnected // true
+```
+
+上面代码中，`test`节点是脚本生成的节点，没有插入文档之前，`isConnected`属性返回`false`，插入之后返回`true`。
 
 #### 2. 方法
 
@@ -308,22 +319,271 @@ for (var i = 0; i < children.length; i++) {
 
 ##### 2.1 Node.prototype.appendChild()
 
+`appendChild()`方法接受一个节点对象作为参数，将其插入当前节点的子节点尾部。该方法的返回值就是插入文档的子节点。
+
+```js
+var p = document.createElement('p');
+document.body.appendChild(p);
+```
+
+上面代码新建一个`<p>`节点，将其插入`document.body`的尾部。
+
+如果参数节点是 DOM 已经存在的节点，`appendChild()`方法会将其从原来的位置，移动到新位置。
+
+```js
+var div = document.getElementById('myDiv');
+document.body.appendChild(div);
+```
+
+上面代码中，插入的是一个已经存在的节点`myDiv`，结果就是该节点会从原来的位置，移动到`document.body`的尾部。
+
+如果`appendChild()`方法的参数是`DocumentFragment`节点，那么插入的是`DocumentFragment`的所有子节点，而不是`DocumentFragment`节点本身。返回值是一个空的`DocumentFragment`节点。
+
 ##### 2.2 Node.prototype.hasChildNodes()
+
+`hasChildNodes`方法返回一个布尔值，表示当前节点是否有子节点。
+
+```js
+var foo = document.getElementById('foo');
+if (foo.hasChildNodes()) {
+  foo.removeChild(foo.childNodes[0]);
+}
+```
+
+上面代码表示，如果`foo`节点有子节点，就移除第一个子节点。
+
+注意，子节点包括所有类型的节点，并不仅仅是元素节点。哪怕节点只包含一个空格，`hasChildNodes`方法也会返回`true`。
+
+判断一个节点有没有子节点，有许多种方法，下面是其中的三种。
+
+- `node.hasChildNodes()`
+- `node.firstChild !== null`
+- `node.childNodes && node.childNodes.length > 0`
+
+`hasChildNodes`方法结合`firstChild`属性和`nextSibling`属性，可以遍历当前节点的所有后代节点。
+
+```js
+function DOMComb(parent, callback) {
+  if (parent.hasChildNodes()) {
+    for (var node = parent.firstChild; node; node = node.nextSibling) {
+      DOMComb(node, callback);
+    }
+  }
+  callback(parent);
+}
+// 用法
+DOMComb(document.body, console.log)
+```
+
+上面代码中，`DOMComb`函数的第一个参数是某个指定的节点，第二个参数是回调函数。这个回调函数会依次作用于指定节点，以及指定节点的所有后代节点。
 
 ##### 2.3 Node.prototype.cloneNode()
 
+`cloneNode`方法用于克隆一个节点。它接受一个布尔值作为参数，表示是否同时克隆子节点。它的返回值是一个克隆出来的新节点。
+
+```js
+var cloneUL = document.querySelector('ul').cloneNode(true);
+```
+
+该方法有一些使用注意点。
+
+（1）克隆一个节点，会拷贝该节点的所有属性，但是会丧失`addEventListener`方法和`on-`属性（即`node.onclick = fn`），添加在这个节点上的事件回调函数。
+
+（2）该方法返回的节点不在文档之中，即没有任何父节点，必须使用诸如`Node.appendChild`这样的方法添加到文档之中。
+
+（3）克隆一个节点之后，DOM 有可能出现两个有相同`id`属性（即`id="xxx"`）的网页元素，这时应该修改其中一个元素的`id`属性。如果原节点有`name`属性，可能也需要修改。
+
 ##### 2.4 Node.prototype.insertBefore()
+
+`insertBefore`方法用于将某个节点插入父节点内部的指定位置。
+
+```js
+var insertedNode = parentNode.insertBefore(newNode, referenceNode);
+```
+
+`insertBefore`方法接受两个参数，第一个参数是所要插入的节点`newNode`，第二个参数是父节点`parentNode`内部的一个子节点`referenceNode`。`newNode`将插在`referenceNode`这个子节点的前面。返回值是插入的新节点`newNode`。
+
+```js
+var p = document.createElement('p');
+document.body.insertBefore(p, document.body.firstChild);
+```
+
+上面代码中，新建一个`<p>`节点，插在`document.body.firstChild`的前面，也就是成为`document.body`的第一个子节点。
+
+如果`insertBefore`方法的第二个参数为`null`，则新节点将插在当前节点内部的最后位置，即变成最后一个子节点。
+
+```js
+var p = document.createElement('p');
+document.body.insertBefore(p, null);
+```
+
+上面代码中，`p`将成为`document.body`的最后一个子节点。这也说明`insertBefore`的第二个参数不能省略。
+
+注意，如果所要插入的节点是当前 DOM 现有的节点，则该节点将从原有的位置移除，插入新的位置。
+
+由于不存在`insertAfter`方法，如果新节点要插在父节点的某个子节点后面，可以用`insertBefore`方法结合`nextSibling`属性模拟。
+
+```js
+parent.insertBefore(s1, s2.nextSibling);
+```
+
+上面代码中，`parent`是父节点，`s1`是一个全新的节点，`s2`是可以将`s1`节点，插在`s2`节点的后面。如果`s2`是当前节点的最后一个子节点，则`s2.nextSibling`返回`null`，这时`s1`节点会插在当前节点的最后，变成当前节点的最后一个子节点，等于紧跟在`s2`的后面。
+
+如果要插入的节点是`DocumentFragment`类型，那么插入的将是`DocumentFragment`的所有子节点，而不是`DocumentFragment`节点本身。返回值将是一个空的`DocumentFragment`节点。
 
 ##### 2.5 Node.prototype.removeChild()
 
+`removeChild`方法接受一个子节点作为参数，用于从当前节点移除该子节点。返回值是移除的子节点。（在父元素上调用，一般会用到`div.parentNode`）
+
+```js
+var divA = document.getElementById('A');
+divA.parentNode.removeChild(divA);
+```
+
+上面代码移除了`divA`节点。注意，这个方法是在`divA`的父节点上调用的，不是在`divA`上调用的。
+
+下面是如何移除当前节点的所有子节点。
+
+```js
+var element = document.getElementById('top');
+while (element.firstChild) {
+  element.removeChild(element.firstChild);
+}
+```
+
+被移除的节点依然存在于内存之中，但不再是 DOM 的一部分。所以，一个节点移除以后，依然可以使用它，比如插入到另一个节点下面。
+
+如果参数节点不是当前节点的子节点，`removeChild`方法将报错。
+
 ##### 2.6 Node.prototype.replaceChild()
+
+`replaceChild`方法用于将一个新的节点，替换当前节点的某一个子节点。
+
+```js
+var replacedNode = parentNode.replaceChild(newChild, oldChild);
+```
+
+上面代码中，`replaceChild`方法接受两个参数，第一个参数`newChild`是用来替换的新节点，第二个参数`oldChild`是将要替换走的子节点。返回值是替换走的那个节点`oldChild`。
+
+```js
+var divA = document.getElementById('divA');
+var newSpan = document.createElement('span');
+newSpan.textContent = 'Hello World!';
+divA.parentNode.replaceChild(newSpan, divA);
+```
+
+上面代码是如何将指定节点`divA`替换走。
 
 ##### 2.7 Node.prototype.contains()
 
+`contains`方法返回一个布尔值，表示参数节点是否满足以下三个条件之一。
+
+- 参数节点为当前节点。
+- 参数节点为当前节点的子节点。
+- 参数节点为当前节点的后代节点。
+
+```js
+document.body.contains(node)
+```
+
+上面代码检查参数节点`node`，是否包含在当前文档之中。
+
+注意，当前节点传入`contains`方法，返回`true`。
+
+```js
+nodeA.contains(nodeA) // true
+```
+
 ##### 2.8 Node.prototype.compareDocumentPosition()
+
+`compareDocumentPosition`方法的用法，与`contains`方法完全一致，返回一个六个比特位的二进制值，表示参数节点与当前节点的关系。
+
+| 二进制值 | 十进制值 | 含义                                               |
+| -------- | -------- | -------------------------------------------------- |
+| 000000   | 0        | 两个节点相同                                       |
+| 000001   | 1        | 两个节点不在同一个文档（即有一个节点不在当前文档） |
+| 000010   | 2        | 参数节点在当前节点的前面                           |
+| 000100   | 4        | 参数节点在当前节点的后面                           |
+| 001000   | 8        | 参数节点包含当前节点                               |
+| 010000   | 16       | 当前节点包含参数节点                               |
+| 100000   | 32       | 浏览器内部使用                                     |
+
+```js
+// HTML 代码如下
+// <div id="mydiv">
+//   <form><input id="test" /></form>
+// </div>
+var div = document.getElementById('mydiv');
+var input = document.getElementById('test');
+div.compareDocumentPosition(input) // 20
+input.compareDocumentPosition(div) // 10
+```
+
+上面代码中，节点`div`包含节点`input`（二进制`010000`），而且节点`input`在节点`div`的后面（二进制`000100`），所以第一个`compareDocumentPosition`方法返回`20`（二进制`010100`，即`010000 + 000100`），第二个`compareDocumentPosition`方法返回`10`（二进制`001010`）。
+
+由于`compareDocumentPosition`返回值的含义，定义在每一个比特位上，所以如果要检查某一种特定的含义，就需要使用比特位运算符。
+
+```js
+var head = document.head;
+var body = document.body;
+if (head.compareDocumentPosition(body) & 4) {
+  console.log('文档结构正确');
+} else {
+  console.log('<body> 不能在 <head> 前面');
+}
+```
+
+上面代码中，`compareDocumentPosition`的返回值与`4`（又称掩码）进行与运算（`&`），得到一个布尔值，表示`<head>`是否在`<body>`前面。
 
 ##### 2.9 Node.prototype.isEqualNode()，Node.prototype.isSameNode()
 
+`isEqualNode`方法返回一个布尔值，用于检查两个节点是否相等。所谓相等的节点，指的是**两个节点的类型相同、属性相同、子节点相同**。
+
+```js
+var p1 = document.createElement('p');
+var p2 = document.createElement('p');
+p1.isEqualNode(p2) // true
+```
+
+`isSameNode`方法返回一个布尔值，表示两个节点是否为同一个节点。
+
+```js
+var p1 = document.createElement('p');
+var p2 = document.createElement('p');
+p1.isSameNode(p2) // false
+p1.isSameNode(p1) // true
+```
+
 ##### 2.10 Node.prototype.normalize()
 
+`normalize`方法用于清理当前节点内部的所有文本节点（text）。它会去除空的文本节点，并且将毗邻的文本节点合并成一个，也就是说不存在空的文本节点，以及毗邻的文本节点。
+
+```js
+var wrapper = document.createElement('div');
+wrapper.appendChild(document.createTextNode('Part 1 '));
+wrapper.appendChild(document.createTextNode('Part 2 '));
+wrapper.childNodes.length // 2
+wrapper.normalize();
+wrapper.childNodes.length // 1
+```
+
+上面代码使用`normalize`方法之前，`wrapper`节点有两个毗邻的文本子节点。使用`normalize`方法之后，两个文本子节点被合并成一个。该方法是`Text.splitText`的逆方法
+
 ##### 2.11 Node.prototype.getRootNode()
+
+`getRootNode()`方法返回当前节点所在文档的根节点`document`，与`ownerDocument`属性的作用相同。
+
+```js
+document.body.firstChild.getRootNode() === document
+// true
+document.body.firstChild.getRootNode() === document.body.firstChild.ownerDocument
+// true
+```
+
+该方法可用于`document`节点自身，这一点与`document.ownerDocument`不同。
+
+```js
+document.getRootNode() // document
+document.ownerDocument // null
+```
+

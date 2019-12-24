@@ -43,7 +43,17 @@ Number.MIN_SAFE_INTEGER // -9007199254740991
 
 #### 3. 实例方法
 
-`Number`对象有4个实例方法，都跟将数值转换成指定格式有关 
+`Number`对象有4个实例方法，都跟将数值转换成指定格式有关
+
+|                方法                 |                             作用                             |
+| :---------------------------------: | :----------------------------------------------------------: |
+|    `Number.prototype.toString()`    |                   将一个数值转为字符串形式                   |
+|    `Number.prototype.toFixed()`     | 将一个数转为指定位数的小数（有效范围0-20位），然后返回为字符串 |
+| `Number.prototype.toExponential()`  | 将一个数转为科学计数法。参数为有效小数点位数（0-20位），然后返回为字符串 |
+|  `Number.prototype.toPrecision()`   |       将一个数转为指定位数的有效数字，然后返回为字符串       |
+| `Number.prototype.toLocaleString()` | 受一个地区码作为参数，返回一个字符串，表示当前数字在该地区的当地书写形式 |
+
+
 
 ##### 3.1 Number.prototype.toString()
 

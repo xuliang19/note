@@ -46,7 +46,26 @@ String.fromCharCode(104, 101, 108, 108, 111)
 
 #### 实例方法
 
-##### String.prototype.charAt()
+|                方法                |                             作用                             |
+| :--------------------------------: | :----------------------------------------------------------: |
+|    `String.prototype.charAt()`     |         返回指定位置的字符（不建议使用，用`[]`代替）         |
+|  `String.prototype.charCodeAt()`   |              返回字符串指定位置的 Unicode 码点               |
+|    `String.prototype.concat()`     |               连接两个字符串，返回一个新字符串               |
+|     `String.prototype.slice()`     |                          和数组一样                          |
+|   `String.prototype.substring()`   |         和`slice`方法类似，有几点不同（不建议使用）          |
+|    `String.prototype.substr()`     |          和`slice`类似，只是第二个参数是字符串长度           |
+|    `String.prototype.indexOf()`    |                          和数组一样                          |
+|  `String.prototype.lastIndexOf()`  |                          和数组一样                          |
+|     `String.prototype.trim()`      |           去除字符串两端空格，制表符，换行，回车等           |
+|  `String.prototype.toLowerCase()`  |                           转为小写                           |
+|  `String.prototype.toUpperCase()`  |                           转为大写                           |
+|     `String.prototype.match()`     | 判断字符串是否含有某个字符串，返回第一个某字符串，没有返回`null` |
+|    `String.prototype.search()`     |    和`indexOf`类似，返回匹配的第一个位置，没有则返回`-1`     |
+|    `String.prototype.replace()`    |    替换匹配的子字符串，一般只替换第一个（除非带`g`正则）     |
+|     `String.prototype.split()`     |        按给定规则分割字符串，返回由子字符串组成的数组        |
+| `String.prototype.localeCompare()` |         比较两个字符串，返回一个整数（考虑语言顺序）         |
+
+##### String.prototype.charAt()（不建议使用，一般用`[]`代替）
 
 `charAt`返回指定位置的字符
 
@@ -118,7 +137,7 @@ one + two + three // "33"
 'JavaScript'.slice(0, 4) // "Java"
 ```
 
-##### String.prototype.substring()
+##### String.prototype.substring()（不建议使用）
 
 和`slice`方法类似，有这几点不同：
 

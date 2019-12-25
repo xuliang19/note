@@ -238,3 +238,7 @@ img {
 
 一些有用的[参考链接](https://zhuanlan.zhihu.com/p/34815524)
 
+#### 轮播图
+
+可以用CSS伪类`:target`来实现，这样就可以不用JS了。参考[MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:target)
+

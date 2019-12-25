@@ -48,9 +48,9 @@ Number.MIN_SAFE_INTEGER // -9007199254740991
 |                方法                 |                             作用                             |
 | :---------------------------------: | :----------------------------------------------------------: |
 |    `Number.prototype.toString()`    |                   将一个数值转为字符串形式                   |
-|    `Number.prototype.toFixed()`     | 将一个数转为指定位数的小数（有效范围0-20位），然后返回为字符串 |
-| `Number.prototype.toExponential()`  | 将一个数转为科学计数法。参数为有效小数点位数（0-20位），然后返回为字符串 |
-|  `Number.prototype.toPrecision()`   |       将一个数转为指定位数的有效数字，然后返回为字符串       |
+|    `Number.prototype.toFixed()`     | 将一个数四舍五入为指定位数的小数（有效范围0-20位），然后返回为字符串 |
+| `Number.prototype.toExponential()`  | 将一个数四舍五入为科学计数法。参数为有效小数点位数（0-20位），然后返回为字符串 |
+|  `Number.prototype.toPrecision()`   |    将一个数四舍五入为指定位数的有效数字，然后返回为字符串    |
 | `Number.prototype.toLocaleString()` | 受一个地区码作为参数，返回一个字符串，表示当前数字在该地区的当地书写形式 |
 
 

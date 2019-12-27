@@ -169,10 +169,10 @@ link.href = "some code"
    </html>
    ```
 
-9. 需要制作一个日历时候，上述就不太管用了（`div`太多），对于修改文字内容的用`innerHTML`
+9. 需要制作一个日历时候，上述就不太管用了（`div`太多），对于修改文字内容的用`innerHTML`。`innerHTML`内容可以设置为HTML，例：
 
-   ```
-   
+   ```js
+   div.innerHTML = "<b>哈哈哈</b>"
    ```
 
-   
+   制作日历时候需要用到数组，

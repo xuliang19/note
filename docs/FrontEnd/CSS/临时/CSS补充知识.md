@@ -25,3 +25,18 @@ background-color: #e5eecc;
 ```
 
 2. `background`有关，`background`的覆盖范围是从`content`到`border`底下
+
+3. 伪类：根据状态选择
+
+4. 级联只适合他们权值相同时候
+
+   ```css
+   p {
+   	color: red;
+   }
+   p {
+   	colro: yellow;
+   }
+   ```
+
+5. CSS中值大部分是关键字或数字，当也可能是函数，例如`calc()`

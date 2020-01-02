@@ -22,3 +22,7 @@ object-fit: fill;/* 不会保持图片长宽比 */
 
 CSS语法规范，使用注意等[参考MDN](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Organizing)
 
+#### 4. display
+
+隐藏元素可以用`display: none`或`visibility: hidden`，这两种方法的区别在于：前者不会占用空间；后者虽然隐藏元素，但是仍占据空间（也就是影响着布局）[示例](https://www.runoob.com/css/css-display-visibility.html)
+

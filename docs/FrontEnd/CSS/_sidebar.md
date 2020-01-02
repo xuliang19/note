@@ -17,7 +17,6 @@
   - [Styling links](FrontEnd/CSS/Styling_links.md)
 - **layout**
   - [Introduction](FrontEnd/CSS/Introduction.md)
-  - [Normal Flow](FrontEnd/CSS/Normal_Flow.md)
   - [Flexbox](FrontEnd/CSS/Flexbox.md)
   - [Grids](FrontEnd/CSS/Grids.md)
   - [Floats](FrontEnd/CSS/Floats.md)

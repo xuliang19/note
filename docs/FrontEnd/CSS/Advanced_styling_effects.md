@@ -7,6 +7,8 @@
 3. 第三个是模糊半径（blur radius）
 4. 第四个是阴影颜色（base color）
 
+[box-shadow更多写法](https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-shadow)
+
 ```css
 div {
     box-shadow: 5px 5px 5px black;

@@ -112,9 +112,11 @@ flex-flow: row wrap;
 
 `flex`简写代表值如下：
 
-- `flex-grow`：单位占比值（0表示不会有剩余空间也不会占据）
-- `flex-shrink`：当元素溢出时，指定每个元素减少多少尺寸（0表示不缩小这个元素的尺寸）
-- `flex-basis`：用来设置元素最小尺寸
+- `flex-grow`：当有多余空间时，指定元素分配剩余空间的比例（和`flex:1`类似），`0`表示不分配
+- `flex-shrink`：当空间不足时，指定元素缩小空间的比例，`1`表示不缩小
+- `flex-basis`：设置元素初始尺寸
+
+[W3School详解](https://www.w3schools.com/css/css3_flexbox.asp)
 
 ##### 4.6 水平和垂直对齐
 

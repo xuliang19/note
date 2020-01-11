@@ -1,8 +1,18 @@
-#### 简单下划线
+#### 1. 兼容性和切图
+
+[CSS3兼容方法](https://www.cnblogs.com/jesse131/p/5441199.html)
+
+[前端开发人员也要会的切图技巧](https://blog.csdn.net/xiaoermingn/article/details/53239914)
+
+[前端工程师必备的PS技能——切图篇](https://www.imooc.com/learn/506)
+
+[做一个会PS切图的前端开发](https://www.cnblogs.com/w-wanglei/p/5598336.html)
+
+#### 2. 简单下划线
 
 [参考链接](http://www.htmleaf.com/ziliaoku/qianduanjiaocheng/201601203048.html)
 
-![GIF](GIF.gif)
+![GIF](assets/GIF.gif ":size=100")
 
 基本思路：`::after`添加空内容，`display:block`，并用`position`下划线放到文字下面；用`transform:scaleX()`实现效果最好。类似还有改变`width:0` -->`width:100%`，还有`visibility:hidden` -->`visible`。（`scaleX()`默认从中心发散，可以使用`transform-origin`改变位置）
 
@@ -35,9 +45,7 @@
 }
 ```
 
-
-
-#### perspective
+#### 3. perspective
 
 [参考链接](http://www.htmleaf.com/ziliaoku/qianduanjiaocheng/201502011313.html)
 
@@ -55,7 +63,7 @@ perspective: 600px;
 
 `perspective`的值越大，观察者于物体距离越远，反之越近；默认情况消失点在3D空间的中心位置，可以通过设置`perspective-origin`属性来改变消失点的位置  `perspective-origin:25% 75%;` [(例子)](http://www.htmleaf.com/pins/1412/201502012157/perspective-03.html)
 
-#### transform
+#### 4. transform
 
 3D transform使用和2D transform属性非常像
 
@@ -65,9 +73,11 @@ perspective: 600px;
 - `translateZ( tz )`
 - `scaleZ( sz )`
 
- 注意一点，`rotate`远离你的一端会变小，靠近你的会变大![image-20191213195121793](image-20191213195121793.png)
+ 注意一点，`rotate`远离你的一端会变小，靠近你的会变大
 
-#### transform卡片翻转
+ ![image-20191213195121793](assets/image-20191213195121793.png ":size=200")
+
+#### 5. transform卡片翻转
 
 实现卡片翻转效果基本步骤：
 
@@ -175,7 +185,7 @@ img {
 </html>
 ```
 
-#### transform立方体
+#### 6. transform立方体
 
 仍然使用上述HTML构造
 
@@ -238,7 +248,7 @@ img {
 
 一些有用的[参考链接](https://zhuanlan.zhihu.com/p/34815524)
 
-#### 轮播图
+#### 7. 轮播图
 
 可以用CSS伪类`:target`来实现，这样就可以不用JS了。参考[MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:target)
 

@@ -44,6 +44,8 @@ background: rgba(1, 123, 1, 0.1)
 
 ![image-20191229165924814](assets/BFC7.png ":size=200")
 
+[颜色名称-菜鸟教程](https://www.runoob.com/cssref/css-colornames.html)
+
 #### 4. 函数
 
 `rgb()`，`linear-gradient()`、`url()`这些都是函数，而更像传统意义的函数是`calc()`

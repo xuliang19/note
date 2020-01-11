@@ -303,3 +303,5 @@ footer {
 使用浏览器中网格检测工具可以看到
 
 ![learn-grids-inspector](assets/learn-grids-inspector.png ":size=600")
+
+更多`grid`信息[w3school](https://www.w3schools.com/css/css_grid_item.asp)

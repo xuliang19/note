@@ -33,7 +33,7 @@ background-position: 10px 20px,  top right;
 
 ##### 1.4 background-size
 
-用于改变图像的大小（分别对应着图像的`width`和`height`）。值可以是数值、百分比或关键字。关键字`cover`表示保持图像比例，扩大直到覆盖盒子；``contain`表示保持图像比例，让图像大小适合盒子
+用于改变图像的大小（分别对应着图像的`width`和`height`）。值可以是数值、百分比或关键字。关键字`cover`表示保持图像比例，扩大直到覆盖盒子；`contain`表示保持图像比例，让图像大小适合盒子
 
 ```css
 background-size: 10px 20%;
@@ -113,6 +113,8 @@ background: [color] [image] [repeat] [attachment] [position] / [ size];
 ```
 
 只需注意几点：`size`只能在`position`后面，并且用`/`分隔开；可以任意值里面的一个或多个值
+
+`background`的覆盖范围是从`content`到`border`底下
 
 #### 2. 边框
 

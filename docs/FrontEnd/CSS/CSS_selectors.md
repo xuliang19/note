@@ -8,6 +8,24 @@
 
 `.className { }`
 
+```html
+<div class="one two">1</div>
+<p class="one">2</p>
+<div class="one">1</div>
+<div class="two">2</div>
+```
+
+类选择器和标签选择器组合使用，例如
+
+```css
+div.one {}
+/* 意思就是选择类名为one的div */
+div.one.two {}
+/* 选择同时具有one two类名的div */
+```
+
+[W3C参考](https://www.w3school.com.cn/css/css_selector_class.asp)
+
 ##### 1.3 ID选择器
 
 `#idName { }`

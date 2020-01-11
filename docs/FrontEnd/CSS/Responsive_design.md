@@ -8,6 +8,8 @@
 
 #### 2. media quries
 
+[媒体查询实例](https://www.runoob.com/css3/css3-mediaqueries-ex.html)
+
 用JS或CSS获取设备当前状态，从而采取不同的样式。例如使用CSS的`@media`
 
 ```css

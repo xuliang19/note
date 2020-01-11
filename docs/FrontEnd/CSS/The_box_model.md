@@ -17,7 +17,7 @@ inline盒子（inline boxes）有以下特点：
 
 CSS还提供一个介于block和inline之间的值
 
-`inline-block`：表现和block一样，只是多个可以在一行
+`inline-block`：理解为`inline`的一种特殊形式，具有`block`的外在属性。但是其具有包裹性（`float:left`右边的内容设置`padding`和`margin`问题，就可以使用内容`inline-block`解决，可以设置`padding`和`margin`的原因是其表现仍是`inline`，详见导航栏章节介绍）
 
 ```css
 display: inline-block;

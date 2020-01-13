@@ -168,7 +168,7 @@ document.myForm === document.forms.myForm // true
 
 以下属性返回文档信息。
 
-（1）document.documentURI，document.URL
+###### （1）document.documentURI，document.URL
 
 `document.documentURI`属性和`document.URL`属性都返回一个字符串，表示当前文档的网址。不同之处是它们继承自不同的接口，`documentURI`继承自`Document`接口，可用于所有文档；`URL`继承自`HTMLDocument`接口，只能用于 HTML 文档。
 
@@ -181,7 +181,7 @@ document.documentURI === document.URL
 
 如果文档的锚点（`#anchor`）变化，这两个属性都会跟着变化。
 
-（2）document.domain
+###### （2）document.domain
 
 `document.domain`属性返回当前文档的域名，不包含协议和端口。比如，网页的网址是`http://www.example.com:80/hello.html`，那么`document.domain`属性就等于`www.example.com`。如果无法获取域名，该属性返回`null`。
 
@@ -189,13 +189,13 @@ document.documentURI === document.URL
 
 另外，设置`document.domain`会导致端口被改成`null`。因此，如果通过设置`document.domain`来进行通信，双方网页都必须设置这个值，才能保证端口相同。
 
-（3）document.location
+###### （3）document.location
 
 `Location`对象是浏览器提供的原生对象，提供 URL 相关的信息和操作方法。通过`window.location`和`document.location`属性，可以拿到这个对象。
 
 关于这个对象的详细介绍，请看《浏览器模型》部分的《Location 对象》章节。
 
-（4）document.lastModified
+###### （4）document.lastModified
 
 `document.lastModified`属性返回一个字符串，表示当前文档最后修改的时间。不同浏览器的返回值，日期格式是不一样的。
 
@@ -215,7 +215,7 @@ if (Date.parse(document.lastModified) > lastVisitedDate) {
 
 如果页面上有 JavaScript 生成的内容，`document.lastModified`属性返回的总是当前时间。
 
-（5）document.title
+###### （5）document.title
 
 `document.title`属性返回当前文档的标题。默认情况下，返回``节点的值。但是该属性是可写的，一旦被修改，就返回修改后的值。
 
@@ -224,11 +224,11 @@ document.title = '新标题';
 document.title // "新标题"
 ```
 
-（6）document.characterSet
+###### （6）document.characterSet
 
 `document.characterSet`属性返回当前文档的编码，比如`UTF-8`、`ISO-8859-1`等等。
 
-（7）document.referrer
+###### （7）document.referrer
 
 `document.referrer`属性返回一个字符串，表示当前文档的访问者来自哪里。
 
@@ -241,11 +241,11 @@ document.referrer
 
 `document.referrer`的值，总是与 HTTP 头信息的`Referer`字段保持一致。但是，`document.referrer`的拼写有两个`r`，而头信息的`Referer`字段只有一个`r`。
 
-（8）document.dir
+###### （8）document.dir
 
 `document.dir`返回一个字符串，表示文字方向。它只有两个可能的值：`rtl`表示文字从右到左，阿拉伯文是这种方式；`ltr`表示文字从左到右，包括英语和汉语在内的大多数文字采用这种方式。
 
-（9）document.compatMode
+###### （9）document.compatMode
 
 `compatMode`属性返回浏览器处理文档的模式，可能的值为`BackCompat`（向后兼容模式）和`CSS1Compat`（严格模式）。
 
@@ -429,14 +429,14 @@ document.writeln(2);
 
 ##### 3.3 document.querySelector()，document.querySelectorAll()
 
-`document.querySelector`方法接受一个 CSS 选择器作为参数，返回匹配该选择器的元素节点。如果有多个节点满足匹配条件，则返回第一个匹配的节点。如果没有发现匹配的节点，则返回`null`。
+`document.querySelector`方法接受一个 CSS 选择器作为参数，返回匹配该选择器的元素节点。如果有多个节点满足匹配条件，**则返回第一个匹配的节点**。如果没有发现匹配的节点，则返回`null`。
 
 ```js
 var el1 = document.querySelector('.myclass');
 var el2 = document.querySelector('#myParent > [ng-click]');
 ```
 
-`document.querySelectorAll`方法与`querySelector`用法类似，区别是返回一个`NodeList`对象，包含所有匹配给定选择器的节点。
+`document.querySelectorAll`方法与`querySelector`用法类似，区别是返回一个`NodeList`对象（**那说明就是非动态的集合**，选择多个相同的元素，它和`document.getElementByTagName`不一样，后者是动态集合），包含所有匹配给定选择器的节点
 
 ```js
 elementList = document.querySelectorAll('.myclass');
@@ -465,7 +465,7 @@ document.querySelectorAll('DIV, A, SCRIPT');
 
 但是，它们不支持 CSS 伪元素的选择器（比如`:first-line`和`:first-letter`）和伪类的选择器（比如`:link`和`:visited`），即无法选中伪元素和伪类。
 
-如果`querySelectorAll`方法的参数是字符串`*`，则会返回文档中的所有元素节点。另外，`querySelectorAll`的返回结果不是动态集合，不会实时反映元素节点的变化。
+如果`querySelectorAll`方法的参数是字符串`*`，则会返回文档中的所有元素节点。另外，`querySelectorAll`的**返回结果不是动态集合，不会实时反映元素节点的变化**。
 
 最后，这两个方法除了定义在`document`对象上，还定义在元素节点上，即在元素节点上也可以调用。
 
@@ -553,7 +553,7 @@ document.querySelector('#myElement')
 
 上面代码中，两个方法都能选中`id`为`myElement`的元素，但是`document.getElementById()`比`document.querySelector()`效率高得多。
 
-另外，这个方法只能在`document`对象上使用，不能在其他元素节点上使用。
+**另外，这个方法只能在`document`对象上使用，不能在其他元素节点上使用。**
 
 ##### 3.8 document.elementFromPoint()，document.elementsFromPoint()
 

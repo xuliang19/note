@@ -35,7 +35,7 @@ children.forEach(console.log)
 
 上面代码中，NodeList 实例`children`不是数组，但是具有`length`属性和`forEach`方法。
 
-如果`NodeList`实例要使用数组方法，可以将其转为真正的数组。
+如果`NodeList`实例   要使用数组方法，可以将其转为真正的数组。
 
 ```js
 var children = document.body.childNodes;

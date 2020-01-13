@@ -96,3 +96,16 @@ background-clip: text-box;
 
 [`-webkit-text-fill-color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/-webkit-text-fill-color)
 
+#### 6. border-image
+
+用背景图片作边框，基本用法（会替换掉`border-style`样式）
+
+```css
+/* border-image: image-source image-height image-width image-repeat */
+border-image: url("/images/border.png") 30 30 repeat;
+```
+
+?>  **Tip:** The `border-image` property is actually a shorthand property for the  `border-image-source`, `border-image-slice`, `border-image-width`,  `border-image-outset`  and `border-image-repeat` properties
+
+[MDN参考](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-image), [w3school](https://www.w3schools.com/css/css3_border_images.asp)
+

@@ -32,7 +32,7 @@ CSS3中可用`resize`属性指定一个框，让用户去调整大小
 
   ```css
   div {
-      resize:both;
+      resize:both;/* 还可取值horizontal vertical */
       overflow:auto;
   }
   ```

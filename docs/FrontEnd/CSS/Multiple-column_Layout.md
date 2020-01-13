@@ -53,3 +53,4 @@ Multicol 创建的列无法单独的设定样式。 不存在让单独某一列�
 ![image-20200104164606953](assets/mulco3.png ":size=300")
 
 更多信息查看[MDN](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Multiple-column_Layout), [w3school](https://www.w3schools.com/css/css3_multiple_columns.asp)
+

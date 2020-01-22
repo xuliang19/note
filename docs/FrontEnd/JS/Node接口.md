@@ -2,22 +2,22 @@
 
 #### 1. 属性
 
-|               属性               |                         作用                         |
-| :------------------------------: | :--------------------------------------------------: |
-|    `Node.prototype.nodeType`     |              返回一个数值，表示节点类型              |
-|    `Node.prototype.nodeName`     |                   返回节点大写名称                   |
-|    `Node.prototype.nodeValue`    |     返回字符串，表示当前节点本身的文本值，可读写     |
-|   `Node.prototype.textContent`   |        返回当前节点和它所有后带节点的文本内容        |
-|     `Node.prototype.baseURI`     |       返回字符串，表示当前网页的绝对路径，只读       |
-|  `Node.prototype.ownerDocument`  |     返回当前节点所在的顶层文档对象，即`document`     |
-|   `Node.prototype.nextSibling`   | 返回紧跟当前节点后的第一个同级节点，没有则返回`null` |
-| `Node.prototype.previousSibling` |  返回当前节点前一个紧跟的同级节点，没有则返回`null`  |
-|   `Node.prototype.parentNode`    |                 返回当前节点的父节点                 |
-|  `Node.prototype.parentElement`  |      返回当前节点的父元素节点，没有则返回`null`      |
-|   `Node.prototype.firstChild`    |     返回当前节点的第一个子节点，没有则返回`null`     |
-|    `Node.prototype.lastChild`    |    返回当前节点的最后一个子节点，没有则返回`null`    |
-|   `Node.prototype.childNodes`    |   返回一个类似数组的对象，包括当前节点和所有子节点   |
-|   `Node.prototype.isConnected`   |       返回一个布尔值，表示当前节点是否在文档中       |
+|               属性               |                             作用                             |
+| :------------------------------: | :----------------------------------------------------------: |
+|    `Node.prototype.nodeType`     |                  返回一个数值，表示节点类型                  |
+|    `Node.prototype.nodeName`     |                       返回节点大写名称                       |
+|    `Node.prototype.nodeValue`    |         返回字符串，表示当前节点本身的文本值，可读写         |
+|   `Node.prototype.textContent`   |            返回当前节点和它所有后带节点的文本内容            |
+|     `Node.prototype.baseURI`     |           返回字符串，表示当前网页的绝对路径，只读           |
+|  `Node.prototype.ownerDocument`  |         返回当前节点所在的顶层文档对象，即`document`         |
+|   `Node.prototype.nextSibling`   |     返回紧跟当前节点后的第一个同级节点，没有则返回`null`     |
+| `Node.prototype.previousSibling` |      返回当前节点前一个紧跟的同级节点，没有则返回`null`      |
+|   `Node.prototype.parentNode`    |                     返回当前节点的父节点                     |
+|  `Node.prototype.parentElement`  |          返回当前节点的父元素节点，没有则返回`null`          |
+|   `Node.prototype.firstChild`    |         返回当前节点的第一个子节点，没有则返回`null`         |
+|    `Node.prototype.lastChild`    |        返回当前节点的最后一个子节点，没有则返回`null`        |
+|   `Node.prototype.childNodes`    | 返回一个类似数组的对象，包括当前节点和所有子节点（`NodeList`集合） |
+|   `Node.prototype.isConnected`   |           返回一个布尔值，表示当前节点是否在文档中           |
 
 ##### 1.1 Node.prototype.nodeType
 
@@ -328,7 +328,7 @@ document.body.appendChild(p);
 
 上面代码新建一个`<p>`节点，将其插入`document.body`的尾部。
 
-如果参数节点是 DOM 已经存在的节点，`appendChild()`方法会将其从原来的位置，移动到新位置。
+**如果参数节点是 DOM 已经存在的节点，`appendChild()`方法会将其从原来的位置，移动到新位置**（原来的会删除）
 
 ```js
 var div = document.getElementById('myDiv');

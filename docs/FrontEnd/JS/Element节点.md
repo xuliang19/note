@@ -12,6 +12,51 @@ p.nodeType // 1
 
 #### 1. 实例属性
 
+|               属性               |                             作用                             |
+| :------------------------------: | :----------------------------------------------------------: |
+|        *元素特性相关属性*        |                                                              |
+|           `Element.id`           |                返回指定元素的`id`属性，可读写                |
+|        `Element.tagName`         |      和`nodeName`属性的值相等，返回指定元素的大写标签名      |
+|          `Element.dir`           |          和`document.dir`类似，读写当前元素文字方向          |
+|       `Element.accessKey`        |                  读写分配给当前元素的快捷键                  |
+|       `Element.draggable`        |            返回一个布尔值，表示当前元素是否可拖动            |
+|          `Element.lang`          |                返回当前元素的语言设置，可读写                |
+|        `Element.tabIndex`        |   返回一个整数，表示当前元素在 Tab 键遍历时的顺序，可读写    |
+|         `Element.title`          |                    读写元素的`title`属性                     |
+|       *元素状态的相关属性*       |                                                              |
+|         `Element.hidden`         |             返回布尔值，表示元素是否可见，可读写             |
+|    `Element.contentEditable`     |             使用户可以在网页上编辑这个区块的内容             |
+|   `Element.isContentEditable`    |     返回一个字符串，表示是否设置了`contenteditable`属性      |
+|            *其他属性*            |                                                              |
+|       `Element.attributes`       |   返回一个类似数组的对象，成员是当前元素节点的所有属性节点   |
+|       `Element.className`        | 用来读写当前元素节点的`class`属性。它的值是一个字符串，每个`class`之间用空格分割 |
+|       `Element.classList`        | 返回一个类似数组的对象，当前元素节点的每个`class`就是这个对象的一个成员 |
+|        `Element.dataset`         |         网页元素可以自定义`data-`属性，用来添加数据          |
+|       `Element.innerHTML`        |   返回一个字符串，等同于该元素包含的所有 HTML 代码，可读写   |
+|       `Element.outerHTML`        | 返回一个字符串，表示当前元素节点的所有 HTML 代码，包括该元素本身和所有子元素，可读写 |
+|                                  |            *和client,scroll,offset相关的均为只读*            |
+|      `Element.clientHeight`      |    返回一个整数值，表示元素节点的 CSS 高度(包括`padding`)    |
+|      `Element.clientWidth`       | 返回一个整数值，表示元素节点的 CSS 宽度(包括`padding`，不包括滚动条宽度) |
+|       `Element.clientLeft`       |           等于元素节点左边框（left border）的宽度            |
+|       `Element.clientTop`        |                          和上述类似                          |
+|      `Element.scrollHeight`      | 返回一个整数值（小数会四舍五入），表示当前元素的总高度（单位像素），包括溢出容器、当前不可见的部分(包括`padding`，不包括滚动条) |
+|      `Element.scrollWidth`       |                          和上述类似                          |
+|       `Element.scrollLeft`       |         表示当前元素的水平滚动条向右侧滚动的像素数量         |
+|       `Element.scrollTop`        |          表示当前元素的垂直滚动条向下滚动的像素数量          |
+|      `Element.offsetParent`      | 返回最靠近当前元素的、并且 CSS 的`position`属性不等于`static`的上层元素 |
+|      `Element.offsetHeight`      | 返回一个整数，表示元素的 CSS 高度（包括`padding`, `border`和水平滚动条高度） |
+|      `Element.offsetWidth`       |                          和上述类似                          |
+|       `Element.offsetLeft`       | 返回当前元素左上角相对于`Element.offsetParent`节点的水平位移 |
+|       `Element.offsetTop`        |                          和上述类似                          |
+|         `Element.style`          |                         详见CSS操作                          |
+|        `Element.children`        | 和`childNode`类似，但它只返回子元素（`HTMLCollection`集合）  |
+|   `Element.childElementCount`    |            和`Element.children.length`返回值相同             |
+|   `Element.firstElementChild`    |                返回当前元素的第一个元素子节点                |
+|    `Element.lastElementChild`    |                    返回最后一个元素子节点                    |
+|   `Element.nextElementSibling`   |    返回当前元素节点的后一个同级元素节点，没有则返回`null`    |
+| `Element.previousElementSibling` |    返回当前元素节点的前一个同级元素节点，没有则返回`null`    |
+
+
 ##### 1.1 元素特性的相关属性
 
 ###### （1）Element.id
@@ -422,6 +467,8 @@ document.documentElement.scrollTop
 
 这两个属性都是只读属性，只比`Element.clientHeight`和`Element.clientWidth`多了边框的高度或宽度。如果元素的 CSS 设为不可见（比如`display: none;`），则返回`0`。
 
+?> 注：有关`offset`的属性均为可读，不可赋值修改
+
 ##### 1.14 Element.offsetLeft，Element.offsetTop
 
 `Element.offsetLeft`返回当前元素左上角相对于`Element.offsetParent`节点的水平位移，`Element.offsetTop`返回垂直位移，单位为像素。通常，这两个值是指相对于父节点的位移。
@@ -486,6 +533,38 @@ el.nextElementSibling
 `Element.previousElementSibling`属性返回当前元素节点的前一个同级元素节点，如果没有则返回`null`。
 
 #### 2. 实例方法
+
+|                方法                |                             作用                             |
+| :--------------------------------: | :----------------------------------------------------------: |
+|           *属性相关方法*           |                                                              |
+|          `getAttribute()`          |                       读取某个属性的值                       |
+|       `getAttributeNames()`        |                   返回当前元素的所有属性名                   |
+|          `setAttribute()`          |                          写入属性值                          |
+|          `hasAttribute()`          |                       某个属性是否存在                       |
+|         `hasAttributes()`          |                      当前元素是否有属性                      |
+|        `removeAttribute()`         |                           删除属性                           |
+|             *其他方法*             |                                                              |
+|     `Element.querySelector()`      |                和`document.querySelector`类似                |
+|    `Element.querySelectorAll()`    |             和`document.querySelectorAll()`类似              |
+| `Element.getElementsByClassName()` |          和`document.getElementsByClassName()`类似           |
+|  `Element.getElementsByTagName()`  |           和`document.getElementsByTagName()`类似            |
+|        `Element.closest()`         | 接受一个 CSS 选择器作为参数，返回匹配该选择器的、最接近当前节点的一个祖先节点（包括当前节点本身） |
+|        `Element.matches()`         |    返回一个布尔值，表示当前元素是否匹配给定的 CSS 选择器     |
+|           *事件相关方法*           |                                                              |
+|    `Element.addEventListener()`    |                      添加事件的回调函数                      |
+|  `Element.removeEventListener()`   |                       移除事件监听函数                       |
+|     `Element.dispatchEvent()`      |                           触发事件                           |
+|             *其他方法*             |                                                              |
+|     `Element.scrollIntoView()`     | 滚动当前元素，进入浏览器的可见区域，类似于设置`window.location.hash`的效果 |
+| `Element.getBoundingClientRect()`  | 返回一个对象，提供当前元素节点的大小、位置等信息，基本上就是 CSS 盒状模型的所有信息 |
+|     `Element.getClientRects()`     | 返回一个类似数组的对象，里面是当前元素在页面上形成的所有矩形 |
+| `Element.insertAdjacentElement()`  | 相对于当前元素的指定位置，插入一个新的节点。该方法返回被插入的节点 |
+|   `Element.insertAdjacentHTML()`   | 用于将一个 HTML 字符串，解析生成 DOM 结构，插入相对于当前节点的指定位置 |
+|   `Element.insertAdjacentText()`   | 相对于当前节点的指定位置，插入一个文本节点，用法与`Element.insertAdjacentHTML`方法完全一致 |
+|         `Element.remove()`         |                   和`ChildNode.remove`一样                   |
+|         `Element.focus()`          |            用于将当前页面的焦点，转移到指定元素上            |
+|          `Element.blur()`          |                   用于将焦点从当前元素移除                   |
+|         `Element.click()`          |  用于在当前元素上模拟一次鼠标点击，相当于触发了`click`事件   |
 
 ##### 2.1 属性相关方法
 

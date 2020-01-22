@@ -34,6 +34,8 @@ CSSStyleDeclaration 接口用来操作元素的样式。三个地方部署了这
 - `CSSStyle`实例的`style`属性
 - `window.getComputedStyle()`的返回值
 
+**`Element.style`返回的只是行内样式，并不是该元素的全部样式**。通过样式表设置的样式，或者从父元素继承的样式，无法通过这个属性得到。**元素的全部样式要通过`window.getComputedStyle()`得到**。
+
 CSSStyleDeclaration 接口可以直接读写 CSS 的样式属性，不过，连词号需要变成骆驼拼写法。
 
 ```js
@@ -55,13 +57,11 @@ divStyle.width // 100px
 
 注意，该对象的属性值都是字符串，设置时必须包括单位，但是不含规则结尾的分号。比如，`divStyle.width`不能写为`100`，而要写为`100px`。
 
-另外，`Element.style`返回的只是行内样式，并不是该元素的全部样式。通过样式表设置的样式，或者从父元素继承的样式，无法通过这个属性得到。元素的全部样式要通过`window.getComputedStyle()`得到。
-
 ##### 2.2 CSSStyleDeclaration 实例属性
 
 ###### （1）CSSStyleDeclaration.cssText
 
-`CSSStyleDeclaration.cssText`属性用来读写当前规则的所有样式声明文本。
+`CSSStyleDeclaration.cssText`属性用来读写**行间**样式文本。
 
 ```js
 var divStyle = document.querySelector('div').style;
@@ -74,7 +74,7 @@ divStyle.cssText = 'background-color: red;'
 
 注意，`cssText`的属性值不用改写 CSS 属性名。
 
-删除一个元素的所有行内样式，最简便的方法就是设置`cssText`为空字符串。
+**删除一个元素的所有行内样式，最简便的方法就是设置`cssText`为空字符串**。
 
 ```js
 divStyle.cssText = '';
@@ -843,4 +843,35 @@ function mqCallback(e) {
 ```
 
 注意，`MediaQueryList.removeListener()`方法不能撤销`MediaQueryList.onchange`属性指定的监听函数。
+
+#### 12. JS动态修改CSS样式方法
+
+两大类，一种是在元素内新建`style`内联属性覆盖其他样式，缺点很明显，例如还会导致伪类失效；另一种是增加样式引用，这种比较好
+
+- 第一大类两种方法
+
+  ```js
+  var obj = doucument.getElementById("id");
+  //方法一(注意大小写)
+  obj.style.backgroundColor = "blue";
+  //方法二(注意大小写)
+  obj.style.cssText = "background-color:blue";
+  //这里为了避免覆盖之前的样式,可以用累加
+  obj.style.cssText += "background-color:blue";
+  ```
+
+- 第二大类两种方法
+
+  ```js
+  var obj = doucument.getElementById("id");
+  //方法一，事先设置好样式，也可以放外部.style2 {...}
+  obj.setAttribute("class", "style2")
+  //用className,用累加可以不覆盖之前的样式
+  obj.className += " ";//要用空格分开属性。就是直接设置里面的字符
+  obj.className += "style2"
+  //方法二，外部设置好样式（这里也可以通过属性累加）
+  var obj = 获取<link>元素； 
+  obj.setAttribute("href", "样式路径")
+  //setAttribute是有就覆盖，没有就创建
+  ```
 

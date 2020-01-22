@@ -4,6 +4,15 @@
 
 如果当前节点是父节点，就会混入了（mixin）`ParentNode`接口。由于只有元素节点（element）、文档节点（document）和文档片段节点（documentFragment）拥有子节点，因此只有这三类节点会拥有`ParentNode`接口。
 
+|           属性/方法            |                             作用                             |
+| :----------------------------: | :----------------------------------------------------------: |
+|     `ParentNode.children`      |   返回一个`HTMLCollection`，成员是所有**元素**子节点，只读   |
+| `ParentNode.firstElementChild` |          返回第一个**元素**子节点，没有则返回`null`          |
+| `ParentNode.lastElementChild`  |         返回最后一个**元素**子节点，没有则返回`null`         |
+| `ParentNode.childElementCount` |           返回一个整数，表示所有**元素**节点的数目           |
+|     `ParentNode.append()`      | 没有返回值，在最后一个**元素**节点后追加一个或多个节点(还可以是文本节点)；`appendChild()`有返回值 |
+|     `ParentNode.prepend()`     | 没有返回值，在第一个**元素**节点前添加一个或多个节点(还可以是文本节点)；`insertBefore()`有返回值 |
+
 ##### 1.1 ParentNode.children
 
 `children`属性返回一个`HTMLCollection`实例，成员是当前节点的所有元素子节点。该属性只读。
@@ -79,6 +88,13 @@ parent.append('Hello', p);
 #### 2. ChildNode 接口
 
  如果一个节点有父节点，那么该节点就拥有了`ChildNode`接口。 
+
+|           方法            |                        作用                        |
+| :-----------------------: | :------------------------------------------------: |
+|   `ChildNode.remove()`    |                    移除当前节点                    |
+|   `ChildNode.before()`    | 在当前节点前面插入一个或多个节点(还可以使文本节点) |
+|    `ChildNode.after()`    | 在当前节点后面插入一个或多个节点(还可以使文本节点) |
+| `ChildNode.replaceWith()` |   使用参数节点，替换当前节点(参数可以是文本节点)   |
 
 ##### 2.1 ChildNode.remove()
 

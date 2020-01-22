@@ -13,6 +13,44 @@
 
 #### 2. 属性
 
+|     属性     | 作用 |
+| :----------: | :--: |
+| *快捷方式属性* |  |
+| `document.defaultView` | 返回`document`对象所属的`window`对象 |
+| `document.doctype` | 指向`<!DOCTYPE html>` |
+| `document.documentElement` | 返回当前文档的根元素节点（root），一般是`<html>` |
+| `document.body` | 指向`<body>`，可写 |
+| `document.head` | 指向`<head>`，可写 |
+| `document.scrollingElement` | 返回文档的滚动元素，标准模式下返回`<html>`，兼容(quirk)模式返回`<body>` |
+| `document.activeElement` | 返回获得当前焦点（focus）的 DOM 元素，没有则返回`<body>`或`null` |
+| `document.fullscreenElement` | 返回当前以全屏状态展示的 DOM 元素 |
+|            *节点集合属性*             |                                                       |
+|           `document.links`            | 返回当前文档所有设定了`href`属性的`<a>`及`<area>`节点 |
+|           `document.forms`            |               返回所有`<form>`表单节点                |
+|           `document.images`           |              返回页面所有`<img>`图片节点              |
+| `document.embeds`, `document.plugins` |                 返回所有`<embed>`节点                 |
+|          `document.scripts`           |                返回所有`<script>`节点                 |
+|        `document.styleSheets`         |            返回文档内嵌或引入的样式表集合             |
+|   *文档静态信息属性*    |                                                              |
+| `document.documentURI`  |      返回一个字符串，表示当前文档的网址，可用于所有文档      |
+|     `document.URL`      |     返回一个字符串，表示当前文档的网址，只能用于HTML文档     |
+|    `document.domain`    |             返回当前文档的域名，不包含协议和端口             |
+|   `document.location`   |                提供 URL 相关的信息和操作方法                 |
+| `document.lastModified` |          返回一个字符串，表示当前文档最后修改的时间          |
+|    `document.title`     |                      返回当前文档的标题                      |
+| `document.characterSet` |                      返回当前文档的编码                      |
+|   `document.referrer`   |         返回一个字符串，表示当前文档的访问者来自哪里         |
+|     `document.dir`      |                 返回一个字符串，表示文字方向                 |
+|  `document.compatMode`  | 返回浏览器处理文档的模式，可能的值为`BackCompat`（向后兼容模式）和`CSS1Compat`（严格模式） |
+|       *文档状态属性*       |                                                  |
+|     `document.hidden`      | 返回一个布尔值，表示当前页面是否可见(切换窗口等) |
+| `document.visibilityState` |                返回文档的可见状态                |
+|   `document.readyState`    |                返回当前文档的状态                |
+| *其他属性* |  |
+|     `document.cookie`     | 用来操作浏览器 Cookie |
+|   `document.designMode`   | 控制当前文档是否可编辑，默认`off` |
+| `document.implementation` | 返回一个`DOMImplementation`对象，该对象的方法主要用于创建独立当前文档的新Document对象 |
+
 ##### 2.1 快捷方式属性
 
 以下属性是指向文档内部的某个节点的快捷方式。
@@ -58,11 +96,11 @@ doctype.name // "html"
 document.scrollingElement.scrollTop = 0;
 ```
 
-**（6）document.activeElement**
+###### （6）document.activeElement
 
 `document.activeElement`属性返回获得当前焦点（focus）的 DOM 元素。通常，这个属性返回的是`<input>`、`<textarea>`、`<select>`等表单元素，如果当前没有焦点元素，返回`<body>`元素或`null`。
 
-**（7）document.fullscreenElement**
+###### （7）document.fullscreenElement
 
 `document.fullscreenElement`属性返回当前以全屏状态展示的 DOM 元素。如果不是全屏状态，该属性返回`null`。
 
@@ -253,6 +291,7 @@ document.referrer
 
 ##### 2.4 文档状态属性
 
+
 ###### （1）document.hidden
 
 `document.hidden`属性返回一个布尔值，表示当前页面是否可见。如果窗口最小化、浏览器切换了 Tab，都会导致导致页面不可见，使得`document.hidden`返回`true`。
@@ -346,6 +385,39 @@ document.replaceChild(
 上面代码中，第一步生成一个新的 HTML 文档`doc`，然后用它的根元素`document.documentElement`替换掉`document.documentElement`。这会使得当前文档的内容全部消失，变成`hello world`。
 
 #### 3. 方法
+
+|                方法                 |                             作用                             |
+| :---------------------------------: | :----------------------------------------------------------: |
+|          `document.open()`          | 清除当前文档所有内容，使得文档处于可写状态，供`document.write`方法写入内容 |
+|         `document.close()`          |             用来关闭`document.open()`打开的文档              |
+|         `document.write()`          |                    用于向当前文档写入内容                    |
+|        `document.writeln()`         |      除了在输出内容的尾部添加换行符，其余和`write`一样       |
+|     `document.querySelector()`      | 接受一个CSS选择器为参数，返回匹配的元素节点；若有多个则返回第一个 |
+|    `document.querySelectorAll()`    | 和上述类似，只是返回一个`NodeList`，包含所有匹配的元素节点。无匹配返回`null` |
+|  `document.getElementsByTagName()`  | 返回一个类数组对象(`HTMLCollection`实例)，包含所有标签匹配的元素；无匹配返回空集 |
+| `document.getElementsByClassName()` | 返回一个类数组对象(`HTMLCollection`实例)，包含所有类名匹配的元素；无匹配返回空集 |
+|   `document.getElementsByName()`    | 返回一个类似数组的的对象（`NodeList`实例），包含所有name匹配的元素 |
+|     `document.getElementById()`     | 返回匹配指定`id`属性的元素节点；只能在`document`上使用，`element`不能使用 |
+|    `document.elementFromPoint()`    |             返回位于页面指定位置最上层的元素节点             |
+|   `document.elementsFromPoint()`    |   返回一个数组，成员是位于指定坐标（相对于视口）的所有元素   |
+|     `document.createElement()`      |                用来生成元素节点，并返回该节点                |
+|     `document.createTextNode()`     |         用来生成文本节点（`Text`实例），并返回该节点         |
+|    `document.createAttribute()`     |              生成一个新的属性节点（`Attr`实例）              |
+|     `document.createComment()`      |                     生成一个新的注释节点                     |
+| `document.createDocumentFragment()` |                   生成一个空的文档片段对象                   |
+|      `document.createEvent()`       |               生成一个事件对象（`Event`实例）                |
+|    `document.addEventListener()`    |                         详见事件章节                         |
+|  `document.removeEventListener()`   |                         详见事件章节                         |
+|     `document.dispatchEvent()`      |                         详见事件章节                         |
+|        `document.hasFocus()`        |  返回一个布尔值，表示当前文档之中是否有元素被激活或获得焦点  |
+|       `document.adoptNode()`        | 将某个节点及其子节点，从原来所在的文档或`DocumentFragment`里面移除，归属当前`document`对象，返回插入后的新节点 |
+|       `document.importNode()`       | 从原来所在的文档或`DocumentFragment`里面，拷贝某个节点及其子节点，让它们归属当前`document`对象 |
+|   `document.createNodeIterator()`   |                     返回一个子节点遍历器                     |
+|    `document.createTreeWalker()`    |                  返回一个 DOM 的子树遍历器                   |
+|      `document.execCommand()`       |                    改变可编辑的内容的样式                    |
+| `document.queryCommandSupported()`  |          返回一个布尔值，表示浏览器是否支持上述命令          |
+|  `document.queryCommandEnabled()`   |   返回一个布尔值，表示当前是否可用`document.execCommand()`   |
+|      `document.getSelection()`      |                       详见`window`章节                       |
 
 ##### 3.1 document.open()，document.close()
 

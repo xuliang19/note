@@ -429,6 +429,8 @@ document.documentElement.scrollTop
 
 这两个属性都可读写，设置该属性的值，会导致浏览器将当前元素自动滚动到相应的位置。
 
+网页滚动后`clientY + scrollTop`就等于元素的`top`
+
 ##### 1.12 Element.offsetParent
 
 `Element.offsetParent`属性返回最靠近当前元素的、并且 CSS 的`position`属性不等于`static`的上层元素。

@@ -267,6 +267,18 @@ var a = {
 (a.b).m() // 等同于 b.m()
 ```
 
+简化一下如下：（`this.a`-->`obj.a`，找不到，所以就是`undefined`。和函数里的全局和局部变量别混淆了，那些都是自由变量，这个是属性）
+
+```js
+var a = 4;//相当于window.a = 4;
+var obj = {
+    b: function() {
+        console.log(this.a);
+    }
+}
+obj.b();//undefined
+```
+
 如果要达到预期效果，只有写成下面这样。
 
 ```js
@@ -309,12 +321,22 @@ hello()//undefined
 
 ![image-20191220103133186](assets/image-20191220103133186.png ":size=300")
 
-所以，赋值给变量的得是一个对象，否则没法调用
+所以，赋值给变量最好是一个对象
 
 ```js
 var hello = a.b;
 hello.m() // Hello
 ```
+
+若想调用`hello =  a.b.m`，那就用`bind()`绑定内部`this`
+
+```js
+//注意this作用域是a.b
+var hello = a.b.m.bind(a.b);
+hello()//"Hello"
+```
+
+
 
 #### 4. 使用注意点
 

@@ -110,6 +110,23 @@ Fubar(1, 2)._foo // 1
 3. 将这个空对象赋值给函数内部的`this`关键字。
 4. 开始执行构造函数内部的代码。
 
+用代码表示如下：
+
+```js
+function Person(name, qq) {
+    //当使用new新建实例的时候，系统替我们做
+    //var this = new Object();
+    this.name = name;
+    this.qq = qq;
+    this.sayName = function() {
+        console.log(this.name);
+    };
+    //也会做
+    //return this;
+}
+//还有指向构造函数原型
+```
+
 如果构造函数内部有`return`语句，而且`return`后面跟着一个对象，`new`命令会返回`return`语句指定的对象；否则，就会不管`return`语句，返回`this`对象
 
 ```js

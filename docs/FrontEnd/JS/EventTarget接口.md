@@ -85,7 +85,6 @@ el.addEventListener('click', function () { print('Hello'); }, false);
 注意，`EventTarget.removeEventListener`无法移除匿名函数；第三个参数不同也不行。
 
 #### 4. EventTarget.dispatchEvent()
-<p style="color:red;">没看明白</p>
 `EventTarget.dispatchEvent`方法在当前节点上触发指定事件，从而触发监听函数的执行。该方法返回一个布尔值，只要有一个监听函数调用了`Event.preventDefault()`，则返回值为`false`，否则为`true`。 
 
  `dispatchEvent`方法的参数是一个`Event`对象的实例 

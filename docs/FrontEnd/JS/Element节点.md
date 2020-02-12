@@ -33,6 +33,7 @@ p.nodeType // 1
 |       `Element.classList`        | 返回一个类似数组的对象，当前元素节点的每个`class`就是这个对象的一个成员 |
 |        `Element.dataset`         |         网页元素可以自定义`data-`属性，用来添加数据          |
 |       `Element.innerHTML`        |   返回一个字符串，等同于该元素包含的所有 HTML 代码，可读写   |
+|       `Element.innerText`        |          类似`textContent`，兼容性比`textContent`好          |
 |       `Element.outerHTML`        | 返回一个字符串，表示当前元素节点的所有 HTML 代码，包括该元素本身和所有子元素，可读写 |
 |                                  |            *和client,scroll,offset相关的均为只读*            |
 |      `Element.clientHeight`      |    返回一个整数值，表示元素节点的 CSS 高度(包括`padding`)    |

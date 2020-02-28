@@ -213,4 +213,34 @@
     el.classList.add('classname');
     ```
 
+30. Node.js阻塞和非阻塞代码示例。非阻塞不需要等文件读取完成，可以同时执行接下来的代码
+
+    ```js
+    // 阻塞
+    var fs = require("fs");
+    var data = fs.readFileSync('input.txt');
+    console.log(data.toString());
+    console.log("程序执行结束!");
     
+    // output
+    $ node main.js
+    菜鸟教程官网地址：www.runoob.com
+    程序执行结束!
+    ```
+
+    ```js
+    // 非阻塞
+    var fs = require("fs");
+    fs.readFile('input.txt', function (err, data) {
+        if (err) return console.error(err);
+        console.log(data.toString());
+    });
+    console.log("程序执行结束!");
+    
+    // output
+    $ node main.js
+    程序执行结束!
+    菜鸟教程官网地址：www.runoob.com
+    ```
+
+31. 在任何模块文件内部，可以使用`__dirname`变量获取当前模块文件所在目录的完整绝对路径

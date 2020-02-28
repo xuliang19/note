@@ -175,3 +175,9 @@
   `git clean -nf`
   `git clean -nfd`
 - 查看某个指令怎么用 例：`git clean --help`
+
+
+
+------
+
+参考[git教程](https://www.liaoxuefeng.com/wiki/896043488029600)、[git官方文档](https://git-scm.com/doc)

@@ -1,5 +1,5 @@
 - **前端随笔**
-   - [随笔（一）](FrontEnd/前端随笔/随笔（一）.md)
-   - [随笔（二）](FrontEnd/前端随笔/随笔（二）.md)
+   - [CSS随笔](FrontEnd/前端随笔/CSS随笔.md)
+   - [JS随笔](FrontEnd/前端随笔/JS随笔.md)
    - [闭包](FrontEnd/前端随笔/闭包.md)
 

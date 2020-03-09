@@ -27,3 +27,22 @@
 
 还可以单独设置`overflow-x`或者`overflow-y`横向和纵向溢出方式
 
+#### 2. 设置文本溢出
+
+设置溢出的文本为省略号
+
+```html
+<p>
+    设置溢出的文本为省略号
+</p>
+```
+
+```css
+/* 设置文字不准换行;设置overflow为hidden;最后设置多余的内容显示为省略号 */
+p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+```
+

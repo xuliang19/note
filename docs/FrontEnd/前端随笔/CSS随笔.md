@@ -382,3 +382,5 @@
     ![image-20200107221749356](assets/40.png ":size=120")
 
 42. `<label>`、`<input>`、`<select>`都是行内元素
+
+43. 让所有行内元素在一行，用`white-space: nowrap`

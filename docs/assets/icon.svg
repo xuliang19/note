@@ -14,7 +14,7 @@
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="icon" transform="translate(-98.000000, 2.000000)">
             <g id="body" transform="translate(159.000000, 45.000000) rotate(-90.000000) translate(-159.000000, -45.000000) ">
-                <use fill="#2ECE53" fill-rule="evenodd" xlink:href="#path-1"/>
+                <use fill="#c62f2f" fill-rule="evenodd" xlink:href="#path-1"/>
                 <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"/>
                 <use stroke="#0E1320" stroke-width="4" xlink:href="#path-1"/>
             </g>

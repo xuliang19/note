@@ -384,3 +384,102 @@
 42. `<label>`、`<input>`、`<select>`都是行内元素
 
 43. 让所有行内元素在一行，用`white-space: nowrap`
+
+44. [`vertical-align`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/vertical-align)用来指定行内元素（inline）或表格单元格（table-cell）元素的垂直对齐方式
+
+
+
+##### 小米商城项目随笔
+
+1. 顶部导航栏中，当子元素设定宽度，窗口缩小出现滚动条时候，发生子元素溢出父元素的情况。(因为父元素的`width`是视口100%)
+   ![image-20200311114922095](assets/image-20200311114720658.png)
+
+   ```html
+   <div class="topbar">
+       <div class="container">
+           ...
+       </div>
+   </div>
+   <!-- css -->
+   .topbar {
+   	height: 40px;
+   }
+   .container {
+   	width: 1220px;
+   }
+   ```
+
+   小米官网解决办法，直接设定（推荐）
+
+   ```css
+   body {
+   	min-width: 1220px;
+   }
+   ```
+
+   解决办法2（但是`inline-block`可能会破坏布局）
+
+   ```css
+   /* 主要是利用inline-block包裹性 */
+   .topbar {
+   	min-width: 100%;
+       display: inline-block;
+   }
+   ```
+
+   解决办法3
+
+   ```css
+   .topbar {
+   	display: table;
+   }
+   ```
+
+2. 清除浮动推荐用法，`display:table`还可以消除`margin`带来的影响
+
+   ```css
+   /* 需要清除浮动的元素就添加class="clearfix" */
+   .clearfix::before, .clearfix::after {
+       content: "";
+       display: table;
+   }
+   .clearfix::after {
+       clear: both;
+   }
+   ```
+
+3. `<del>`标签用于给文本添加删除线
+
+4. `:hover`覆盖。最终的hover颜色也是绿色，都是针对一个元素的相同样式（`:hover`也包括在内）
+
+   ```html
+   <div class="wrap">
+       <a href="">test</a>
+   </div>
+   ```
+
+   ```css
+   a {
+       text-decoration: none;
+       color: black;
+   }
+   a:hover {
+       color: red;
+   }
+   .wrap a {
+       color: green;
+   }
+   ```
+
+3. 解决CSS未加载就显示文字，加载了就显示图片，可添加`class`
+
+   ```css
+   .ir {
+       text-align: left;
+       text-indent: -9999em;
+       overflow: hidden;
+   }
+   ```
+
+   
+

@@ -244,3 +244,12 @@
     ```
 
 31. 在任何模块文件内部，可以使用`__dirname`变量获取当前模块文件所在目录的完整绝对路径
+
+32. `classList`添加和删除某个`class`
+
+    ```js
+    foo.classList.add('bold');
+    foo.classList.remove('bold');
+    ```
+
+    

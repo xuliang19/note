@@ -159,6 +159,10 @@ p::first-line {
 }
 ```
 
+##### 2.4 文本垂直对齐
+
+[`vertical-align`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/vertical-align)用来指定行内元素（inline）或表格单元格（table-cell）元素的垂直对齐方式
+
 #### 3. 其他属性
 
 Font 样式:

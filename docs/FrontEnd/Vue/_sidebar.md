@@ -1,2 +1,7 @@
 - [1.vue快速入门](/FrontEnd/Vue/1.vue快速入门.md)
-
+- [2.vue基础](/FrontEnd/Vue/2.vue基础.md)
+- [3.vue深入](/FrontEnd/Vue/3.vue深入.md)
+- [4.vue动画](/FrontEnd/Vue/4.vue动画.md)
+- [5.vue组件](/FrontEnd/Vue/5.vue组件.md)
+- [6.vue路由](/FrontEnd/Vue/6.vue路由.md)
+- [7.vue补充](/FrontEnd/Vue/7.vue补充.md)
